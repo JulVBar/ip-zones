@@ -1,0 +1,49 @@
+// @import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&family=Raleway:wght@400;600&display=swap');
+
+//colors
+$primary: #3B82F6;
+$primary-opacity: rgba(59, 130, 246, 0.3);
+$black: #111827;
+$white: #ffffff;
+$dark-grey: #4B5563;
+$grey: #9CA3AF;
+$light-grey: #E5E7EB;
+$border-grey: #D1D5DB;
+$green: #22C55E;
+$yellow: #EAB308;
+$red: #EF4444;
+
+$blue-gradient: linear-gradient(243.98deg, #3B82F6 -16.81%, #BBD1F4 81.37%);
+
+
+//fonts
+// $font: 'El Messiri', sans-serif;
+
+//media
+$desktop: 1300px;
+$tablet: 950px;
+$mobile: 650px;
+$mini-mobile: 410px;
+
+//shadow
+$box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.1), 0px 1px 3px 0px rgba(0, 0, 0, 0.1);
+
+
+
+@mixin breakpoint($bp) {
+    @media (max-width: $bp) {
+        @content;
+    }
+}
+
+// @mixin breakpoint-min($bp) {
+//     @media (min-width: $bp) {
+//         @content;
+//     }
+// }
+
+// @mixin breakpoint-height($bp) {
+//     @media (max-height: $bp) {
+//         @content;
+//     }
+// }
