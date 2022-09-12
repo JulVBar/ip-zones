@@ -5,7 +5,8 @@ import { MapPageComponent } from './pages/map-page/map-page.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
-  { path: 'map', component: MapPageComponent }
+  { path: 'map', component: MapPageComponent },
+  // { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({

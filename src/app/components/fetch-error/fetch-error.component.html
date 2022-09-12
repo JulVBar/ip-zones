@@ -1,0 +1,22 @@
+<div
+  *ngIf="errorService.error$ | async as error"
+  class="error-wrapper"
+>
+  <div id="error-box">
+    <div class="face2">
+      <div class="eye"></div>
+      <div class="eye right"></div>
+      <div class="mouth sad"></div>
+    </div>
+    <div class="shadow move"></div>
+    <div class="message">
+      <div>Error!</div>
+      <p>{{ error }}</p>
+    </div>
+    <button
+      class="button-blue"
+      (click)="errorService.clear()"
+    >
+      Try again</button>
+  </div>
+</div>

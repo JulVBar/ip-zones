@@ -1,0 +1,9 @@
+@import '../../../assets/styles/variables.scss';
+
+.panel {
+  width: 26rem;
+  background: $light-grey;
+  border-right: 1px solid $border-grey;
+  height: 100%;
+  padding: 2rem;
+}

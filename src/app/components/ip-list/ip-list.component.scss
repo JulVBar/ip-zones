@@ -1,0 +1,43 @@
+@import '../../../assets/styles/variables.scss';
+@import '../../../assets/styles/ip-list.scss';
+
+.ip-container {
+  position: relative;
+  background: $white;
+  max-height: 10%;
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    width: 0.8rem;
+  }
+  &::-webkit-scrollbar-track {
+      background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+      background-color: $light-grey;
+      height: 1rem;
+      border-radius: 1.5rem;
+      border: 3px solid $white;
+  }
+}
+
+.ip-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem 4rem;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+}
+
+.pagination ::ng-deep .ngx-pagination .current {
+  width: 2rem;
+  height: 2rem;
+  padding: 0.3rem 0.6rem;
+  text-align: center;
+  color: $white;
+  border-radius: 0.2rem;
+  background: $primary;
+}

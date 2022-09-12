@@ -1,0 +1,34 @@
+
+<div class="ip-wrapper">
+  <ul class="ip-list">
+    <li class="ip-list-item ip-title"></li>
+    <li class="ip-list-item ip-title">Type</li>
+    <li class="ip-list-item ip-title">Net</li>
+    <li class="ip-list-item ip-title">Gate</li>
+    <li class="ip-list-item ip-title">Ip zone</li>
+    <li class="ip-list-item ip-title">Vlan</li>
+    <li class="ip-list-item ip-title">Signed</li>
+    <li class="ip-list-item ip-title">Date</li>
+    <li class="ip-list-item ip-title"></li>
+  </ul>
+  <div class="ip-container">
+    <app-fetch-error></app-fetch-error>
+    <app-loader *ngIf="loading"></app-loader>
+    <app-ip-item
+      *ngFor="let ipItem of ipZoneService.ipItems | paginate: { itemsPerPage: 12, currentPage: p }"
+      [ipItem]="ipItem"
+    >
+    </app-ip-item>
+
+  </div>
+  <div class="ip-footer">
+    <div>
+      <button
+      class="button-blue"
+      (click)="updatelist()">Update</button>
+    </div>
+    <div class="pagination">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+  </div>
+</div>

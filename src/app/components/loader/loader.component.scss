@@ -1,0 +1,32 @@
+@import '../../../assets/styles/variables.scss';
+
+.loader {
+	margin: 4rem 0;
+	width: 100%;
+	min-height: 100vh;
+	background: $white;
+
+    &-text {
+        text-align: center;
+        width: 100%;
+        height: 100px;
+        line-height: 100px;
+        span {
+            display: inline-block;
+            margin: 0 5px;
+            color: $primary;
+            font-weight: 700;
+            @for $i from 0 through 6 {
+                &:nth-child(#{$i + 1}) {
+                    filter: blur(0px);
+                    animation: blur-text 1.5s (#{$i/5})+s infinite linear alternate;
+                }
+            }
+        }
+    }
+}
+
+@keyframes blur-text {
+	0% {filter: blur(0px);}
+	100% {filter: blur(4px);}
+}

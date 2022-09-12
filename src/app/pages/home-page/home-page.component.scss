@@ -1,0 +1,13 @@
+@import '../../../assets/styles/variables.scss';
+
+.home {
+  &-header {
+    height: 10rem;
+    width: 100%;
+    border-bottom: 1px solid $light-grey;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 4rem;
+  }
+}

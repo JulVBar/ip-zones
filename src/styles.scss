@@ -13,7 +13,13 @@
 *,
 *:before,
 *:after {
-    box-sizing: inherit;
+    box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-flow: column nowrap;
 }
 
 h1, h2, h3, h4, h5, p {
@@ -49,20 +55,39 @@ button {
 }
 
 .page {
-    overflow: hidden;
     display: flex;
-    flex-flow: column nowrap;
-    // width: 100vw;
-    min-height: 100vh;
+    &-content {
+      width: 100%;
+    }
+}
+
+header {
+  flex: 0 0 6.875rem;
 }
 
 main {
+    padding-left: 4rem;
+    padding-top: 1.6rem;
     flex: 1 1 auto;
-    padding-top: 6.875rem;
 }
 
 .container {
-    margin: 0 auto;
-    max-width: 75rem;
-    padding: 0 1rem;
+    width: 100%;
+    padding: 2rem;
+}
+
+.button-blue {
+  background: $primary;
+  box-shadow: $box-shadow;
+  color: $white;
+  padding: 0.5rem 1rem;
+  border-radius: $br;
+  transition: all .2s linaer;
+  &:hover {
+    background:darken($color: $primary, $amount: 15)
+  }
+  &:disabled {
+    background: $light-grey;
+    color: $grey;
+  }
 }
