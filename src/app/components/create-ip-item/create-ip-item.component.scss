@@ -1,0 +1,105 @@
+@import '../../../assets/styles/variables.scss';
+
+.form {
+  &-wrapper {
+    background: $white;
+    border-radius: $br;
+    padding: 1rem;
+    margin-top: 3rem;
+  }
+  &-title {
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+  }
+  &-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2.5rem;
+    position: relative;
+
+    &-wrapper {
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+
+    &-content {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    &-label {
+      display: block;
+      margin-bottom: 0.6rem;
+      text-transform: uppercase;
+      color: $grey;
+    }
+  }
+  &-control {
+    height: 2.5rem;
+    border-radius: $br;
+    border: 1px solid $border-grey;
+    padding-left: 0.5rem;
+
+    &-error {
+      font-size: 0.8rem;
+      color: $red;
+      position: absolute;
+      top: 5rem;
+      left: 0;
+    }
+    &:focus,
+    &:focus-visible {
+      outline: 2px solid $primary;
+    }
+    &.invalid {
+      border: 1px solid $red;
+    }
+  }
+  &-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin: 1.5rem 3rem;
+  }
+}
+
+.small-input {
+  width: 3.5rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0rem;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.form-loading-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.loading-circle {
+  width: 10px;
+  height: 10px;
+  margin: 0 auto;
+  padding: 10px;
+  border: 7px dashed $primary;
+  border-radius: 100%;
+  animation: rotate 1.5s 0.3s cubic-bezier(0.17, 0.37, 0.43, 0.67) infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

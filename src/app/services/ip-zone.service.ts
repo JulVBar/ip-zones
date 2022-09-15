@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpParams} from '@angular/common/http';
-import {catchError, delay, Observable, retry, tap, throwError} from 'rxjs';
+import {catchError, delay, Observable, tap, throwError} from 'rxjs';
 import {IIpItem} from '../models/ip-item';
 import {ErrorService} from './error.service';
 
@@ -15,6 +15,7 @@ export class IpZoneService {
   }
 
   ipItems: IIpItem[] = [];
+  lastId = 0;
 
   getAll(): Observable<IIpItem[]> {
     return this.http.get<IIpItem[]>('https://62f0bd3157311485d135bea7.mockapi.io/ipzones', {
@@ -23,17 +24,19 @@ export class IpZoneService {
       })
     }).pipe(
       delay(200),
-      tap(items => this.ipItems = items),
+      tap(items => this.ipItems = items.reverse()),
+      tap(items => this.lastId = items[0].id),
       catchError(this.errorHandler.bind(this))
     )
   }
 
-  // create(product: IIpItem): Observable<IIpItem> {
-  //   return this.http.post<IIpItem>('https://fakestoreapi.com/products', product)
-  //     .pipe(
-  //       tap(prod => this.products.push(prod))
-  //     )
-  // }
+  create(item: IIpItem): Observable<IIpItem> {
+    return this.http.post<IIpItem>('https://62f0bd3157311485d135bea7.mockapi.io/ipzones', item)
+      .pipe(
+        tap(item=> this.ipItems.unshift(item)),
+        catchError(this.errorHandler.bind(this))
+      )
+  }
 
   private errorHandler(error: HttpErrorResponse) {
     this.errorService.handle(error.message)

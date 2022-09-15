@@ -5,11 +5,10 @@ export interface IIpItem {
   gate: string;
   ip_zone: {
     zone_id: number;
-    zone_name: string;
-    zone_fullname: string;
+    zone_name: string | null | undefined;
   },
-  vlan: number;
+  vlan: number | null | undefined;
   signed: boolean;
-  date: string;
+  date: Date;
   priority: boolean;
 }

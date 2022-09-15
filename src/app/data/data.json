@@ -6,8 +6,7 @@
    "gate": "10.218.210.0",
    "ip_zone": {
     "zone_id": 1024,
-    "zone_name": "pr",
-    "zone_fullname": "promorskiy"
+    "zone_name": "pr"
    },
    "vlan": 749,
    "signed": true,
@@ -21,8 +20,7 @@
    "gate": "10.218.210.0",
    "ip_zone": {
     "zone_id": 1024,
-    "zone_name": "nev",
-    "zone_fullname": "nevskiy"
+    "zone_name": "nev"
    },
    "vlan": 749,
    "signed": false,
@@ -36,8 +34,7 @@
    "gate": "10.218.210.0",
    "ip_zone": {
     "zone_id": 1024,
-    "zone_name": "cen",
-    "zone_fullname": "center"
+    "zone_name": "cen"
    },
    "vlan": 749,
    "signed": true,
@@ -51,8 +48,7 @@
    "gate": "10.218.210.0",
    "ip_zone": {
     "zone_id": 1024,
-    "zone_name": "pr",
-    "zone_fullname": "promorskiy"
+    "zone_name": "pr"
    },
    "vlan": 749,
    "signed": false,
@@ -66,8 +62,7 @@
    "gate": "10.218.210.0",
    "ip_zone": {
     "zone_id": 1024,
-    "zone_name": "pr",
-    "zone_fullname": "promorskiy"
+    "zone_name": "pr"
    },
    "vlan": 749,
    "signed": true,
@@ -81,8 +76,7 @@
    "gate": "10.218.210.0",
    "ip_zone": {
     "zone_id": 1024,
-    "zone_name": "pr",
-    "zone_fullname": "promorskiy"
+    "zone_name": "kl"
    },
    "vlan": 749,
    "signed": true,
@@ -96,8 +90,7 @@
    "gate": "10.218.210.0",
    "ip_zone": {
     "zone_id": 1024,
-    "zone_name": "pr",
-    "zone_fullname": "promorskiy"
+    "zone_name": "pr"
    },
    "vlan": 749,
    "signed": true,
@@ -111,8 +104,7 @@
    "gate": "10.218.210.0",
    "ip_zone": {
     "zone_id": 1024,
-    "zone_name": "pr",
-    "zone_fullname": "promorskiy"
+    "zone_name": "pr"
    },
    "vlan": 749,
    "signed": true,
@@ -126,8 +118,7 @@
    "gate": "10.218.210.0",
    "ip_zone": {
     "zone_id": 1024,
-    "zone_name": "pr",
-    "zone_fullname": "promorskiy"
+    "zone_name": "pr"
    },
    "vlan": 749,
    "signed": true,
@@ -141,8 +132,7 @@
    "gate": "10.218.210.0",
    "ip_zone": {
     "zone_id": 1024,
-    "zone_name": "pr",
-    "zone_fullname": "promorskiy"
+    "zone_name": "pr"
    },
    "vlan": 749,
    "signed": true,
@@ -156,12 +146,39 @@
    "gate": "10.218.210.0",
    "ip_zone": {
     "zone_id": 1024,
-    "zone_name": "pr",
-    "zone_fullname": "promorskiy"
+    "zone_name": "nev"
    },
    "vlan": 749,
-   "signed": true,
+   "signed": false,
    "date": "10.09.2022",
    "priority": false
-  }
+  },
+  {
+    "id": 12,
+    "code": "pr-218.210-749",
+    "net": "10.218.210.0/24",
+    "gate": "10.218.210.0",
+    "ip_zone": {
+     "zone_id": 1024,
+     "zone_name": "pr"
+    },
+    "vlan": 749,
+    "signed": false,
+    "date": "10.09.2022",
+    "priority": false
+   },
+   {
+    "id": 13,
+    "code": "pr-218.210-749",
+    "net": "10.218.210.0/24",
+    "gate": "10.218.210.0",
+    "ip_zone": {
+     "zone_id": 1024,
+     "zone_name": "kl"
+    },
+    "vlan": 749,
+    "signed": true,
+    "date": "10.09.2022",
+    "priority": false
+   }
  ]

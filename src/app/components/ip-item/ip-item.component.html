@@ -13,7 +13,7 @@
   </li>
   <li class="ip-list-item">{{ipItem.vlan}}</li>
   <li [ngClass]="{'active': ipItem.signed}" class="ip-list-item signed"><div></div></li>
-  <li class="ip-list-item">{{ipItem.date}}</li>
+  <li class="ip-list-item">{{ipItem.date.toString().slice(0, 10)}}</li>
   <li class="ip-list-item dots">
     <svg
     (click)="isOpen = !isOpen"

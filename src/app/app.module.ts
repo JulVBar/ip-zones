@@ -17,6 +17,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoaderComponent } from './components/loader/loader.component';
 import { FetchErrorComponent } from './components/fetch-error/fetch-error.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { CreateIpItemComponent } from './components/create-ip-item/create-ip-item.component';
+import { ReactiveFormsModule }from '@angular/forms';
+import { ModalComponent } from './components/modal/modal.component';
+import { ModalCreateSuccessComponent } from './components/modal-create-success/modal-create-success.component';
 
 @NgModule({
   declarations: [
@@ -32,13 +36,17 @@ import {NgxPaginationModule} from 'ngx-pagination';
     IpListComponent,
     IpItemComponent,
     LoaderComponent,
-    FetchErrorComponent
+    FetchErrorComponent,
+    CreateIpItemComponent,
+    ModalComponent,
+    ModalCreateSuccessComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

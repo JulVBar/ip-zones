@@ -1,0 +1,151 @@
+<div *ngIf="isLoading" class="fixed-wrapper">
+  <div class="fixed-content-center">
+    <div class="loading-circle"></div>
+  </div>
+</div>
+
+<div class="form-wrapper">
+  <div class="form-title">
+    Create ip-item
+  </div>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="form-group">
+      <label for="ip-zone" class="form-group-label">Ip zone</label>
+        <select class="form-control" id="ip-zone" formControlName="ipzone">
+          <option *ngFor="let zone of zones" [value]="zone">{{zone}}</option>
+        </select>
+        <div
+          class="form-control-error"
+          *ngIf="ipzone.errors?.required && ipzone.touched"
+        >
+          Required
+        </div>
+    </div>
+
+    <div class="form-group-wrapper">
+      <div class="form-group-label">Net adress</div>
+      <div class="form-group-content">
+        <div class="form-group small-input">
+          <label for="net1"></label>
+          <input
+            type="number"
+            class="form-control"
+            min="1"
+            max="255"
+            [ngClass]="{'invalid': (net1.errors?.min
+                        || net1.errors?.max
+                        || net1.errors?.required)
+                        && net1.touched}"
+            id="net1"
+            formControlName="net1"
+            required
+          >
+        </div>
+        <div class="form-group small-input">
+          <label for="net2"></label>
+          <input
+            type="number"
+            class="form-control"
+            min="0"
+            max="255"
+            [ngClass]="{'invalid': (net2.errors?.min
+                        || net2.errors?.max
+                        || net2.errors?.required)
+                        && net2.touched}"
+            id="net2"
+            formControlName="net2"
+            required
+          >
+        </div>
+        <div class="form-group small-input">
+          <label for="net3"></label>
+          <input
+            type="number"
+            class="form-control"
+            min="0"
+            max="255"
+            [ngClass]="{'invalid': (net3.errors?.min
+                        || net3.errors?.max
+                        || net3.errors?.required)
+                        && net3.touched}"
+            id="net3"
+            formControlName="net3"
+            required
+          >
+        </div>
+        <div class="form-group small-input">
+          <label for="net4"></label>
+          <input
+            type="number"
+            class="form-control"
+            min="0"
+            max="255"
+            [ngClass]="{'invalid': (net4.errors?.min
+                        || net4.errors?.max
+                        || net4.errors?.required)
+                        && net4.touched}"
+            id="net4"
+            formControlName="net4"
+            required
+          >
+        </div>
+        /
+        <div class="form-group small-input">
+          <label for="net5"></label>
+          <input
+            type="number"
+            class="form-control"
+            min="0"
+            max="255"
+            [ngClass]="{'invalid': (net5.errors?.min
+                        || net5.errors?.max
+                        || net5.errors?.required)
+                        && net5.touched}"
+            id="net5"
+            formControlName="net5"
+            required
+          >
+        </div>
+      </div>
+
+      <div
+        class="form-control-error"
+        *ngIf="((net1.errors?.min || net1.errors?.max || net1.errors?.required) && net1.touched) ||
+        ((net2.errors?.min || net2.errors?.max || net2.errors?.required) && net2.touched) ||
+        ((net3.errors?.min || net3.errors?.max || net3.errors?.required) && net3.touched) ||
+        ((net4.errors?.min || net4.errors?.max || net4.errors?.required) && net4.touched) ||
+        ((net5.errors?.min || net5.errors?.max || net5.errors?.required) && net5.touched)"
+      >
+        Required from 0 to 255
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="vlan" class="form-group-label">Vlan</label>
+      <input
+      type="number"
+      class="form-control"
+      id="vlan"
+      formControlName="vlan"
+      required>
+      <div
+        class="form-control-error"
+        *ngIf="((vlan.errors?.min || vlan.errors?.required) && vlan.touched)"
+      >
+        Required only positive numbers
+      </div>
+    </div>
+
+    <div class="form-buttons">
+      <button
+      type="submit"
+      class="button-blue btn-success"
+      [disabled]="!form.valid"
+    >
+      Save
+    </button>
+      <button type="reset" class="button-blue ">Clear</button>
+    </div>
+  </form>
+</div>
+

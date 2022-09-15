@@ -43,9 +43,11 @@
       }
       &:nth-child(5),
       &:nth-child(6),
-      &:nth-child(7),
+      &:nth-child(7) {
+        width: 7%;
+      }
       &:nth-child(8) {
-        width: 8%;
+        width: 10%;
       }
     }
   }

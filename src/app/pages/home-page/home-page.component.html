@@ -1,11 +1,18 @@
 <div class="page">
-  <app-panel></app-panel>
-  <div class="page-content">
-    <div class="home-header">
-      <app-username></app-username>
-      <app-search-panel></app-search-panel>
+  <div class="page-inner">
+    <app-panel></app-panel>
+    <div class="page-content">
+      <div class="home-header">
+        <app-username></app-username>
+        <app-search-panel></app-search-panel>
+      </div>
+      <app-ip-list></app-ip-list>
     </div>
-    <app-ip-list></app-ip-list>
   </div>
 </div>
 
+<app-fetch-error></app-fetch-error>
+
+<app-modal *ngIf="modalService.isVisible$ | async">
+  <app-modal-create-success></app-modal-create-success>
+</app-modal>
