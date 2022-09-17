@@ -21,6 +21,7 @@ import { CreateIpItemComponent } from './components/create-ip-item/create-ip-ite
 import { ReactiveFormsModule }from '@angular/forms';
 import { ModalComponent } from './components/modal/modal.component';
 import { ModalCreateSuccessComponent } from './components/modal-create-success/modal-create-success.component';
+import { CopyStringComponent } from './components/copy-string/copy-string.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { ModalCreateSuccessComponent } from './components/modal-create-success/m
     CreateIpItemComponent,
     ModalComponent,
     ModalCreateSuccessComponent,
+    CopyStringComponent,
   ],
   imports: [
     BrowserModule,

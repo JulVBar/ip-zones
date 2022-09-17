@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { IpZoneService } from 'src/app/services/ip-zone.service';
-import {ModalService} from '../../services/modal.service'
+import {ModalService} from '../../services/modal.service';
+const Netmask = require('netmask').Netmask;
 
 @Component({
   selector: 'app-create-ip-item',
@@ -43,7 +44,7 @@ export class CreateIpItemComponent implements OnInit {
     net5: new FormControl<number>(0, [
       Validators.required,
       Validators.min(0),
-      Validators.max(255)
+      Validators.max(32)
     ]),
     vlan: new FormControl<number>(0, [
       Validators.required,
@@ -78,19 +79,26 @@ export class CreateIpItemComponent implements OnInit {
 
   submit() {
     this.isLoading = true;
+    const ipSrting: string = this.form.value.net1 + '.' +
+                    this.form.value.net2 + '.' +
+                    this.form.value.net3 + '.' +
+                    this.form.value.net4 + '/' +
+                    this.form.value.net5;
+    const ipObj = new Netmask(ipSrting);
+    const hostMin = ipObj.first;
+    const reversedHost = hostMin.split('.').reverse().join('.').replace('.', 'F').replace('.', 'S');
+    const firstIndex = reversedHost.indexOf('F') + 1;
+    const secondIndex = reversedHost.indexOf('S');
+    const subnet = reversedHost.slice(firstIndex, secondIndex);
 
     this.ipZoneService.create({
       id: +this.ipZoneService.lastId + 1 as number,
+      net: ipSrting as string,
+      gate: hostMin as string,
       code: this.form.value.ipzone + '-' +
         this.form.value.net2 + '-' +
-        this.form.value.net3 + '-' +
+        subnet + '-' +
         this.form.value.vlan as string,
-      net: this.form.value.net1 + '.' +
-        this.form.value.net2 + '.' +
-        this.form.value.net3 + '.' +
-        this.form.value.net4 + '/' +
-        this.form.value.net5 as string,
-      gate: '0.0.0.0' as string,
       ip_zone: {
         zone_id: 100 as number,
         zone_name: this.form.value.ipzone as string,
@@ -106,3 +114,4 @@ export class CreateIpItemComponent implements OnInit {
     })
   }
 }
+

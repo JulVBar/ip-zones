@@ -1,0 +1,98 @@
+@import '../../../assets/styles/variables.scss';
+
+@keyframes scaleIn {
+	0% {
+		transform: scale(0.7);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
+.copy {
+  &-wrapper {
+    background: $white;
+    border-radius: $br;
+    padding: 1rem;
+    margin-top: 3rem;
+    min-height: 7rem;
+    position: relative;
+  }
+  &-tooltip {
+    animation: scale 1s;
+    transform: scale(0.7);
+    position: absolute;
+    top: -1rem;
+    right: -10rem;
+    z-index: 999;
+    padding: 1rem 3rem;
+    border-radius: $br;
+    background: $primary;
+    color: $white;
+  }
+
+  &-title {
+    margin-bottom: 1rem;
+  }
+  &-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &-content {
+    position: relative;
+  }
+  &-loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    height: 100%;
+    background: $white;
+  }
+  &-code {
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+  &-btn {
+    cursor: pointer;
+    svg {
+      width: 2rem;
+      height: 2rem;
+      fill: $primary;
+      transform: scale(1);
+      transition: all 0.2s linear;
+    }
+    &:hover svg {
+      transform: scale(1.2);
+    }
+  }
+}
+
+.loading-dots {
+  width: 0.5rem;
+  height: 0.5rem;
+  display: block;
+  margin: 1rem auto;
+  position: relative;
+  color: $primary;
+  animation: animloader 2s linear infinite;
+}
+
+@keyframes animloader {
+  0% {
+    box-shadow: 14px 0 0 -2px,  38px 0 0 -2px,  -14px 0 0 -2px,  -38px 0 0 -2px;
+  }
+  25% {
+    box-shadow: 14px 0 0 -2px,  38px 0 0 -2px,  -14px 0 0 -2px,  -38px 0 0 2px;
+  }
+  50% {
+    box-shadow: 14px 0 0 -2px,  38px 0 0 -2px,  -14px 0 0 2px,  -38px 0 0 -2px;
+  }
+  75% {
+    box-shadow: 14px 0 0 2px,  38px 0 0 -2px,  -14px 0 0 -2px,  -38px 0 0 -2px;
+  }
+  100% {
+    box-shadow: 14px 0 0 -2px,  38px 0 0 2px,  -14px 0 0 -2px,  -38px 0 0 -2px;
+  }
+}
