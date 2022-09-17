@@ -11,10 +11,7 @@ import { IpZoneService } from 'src/app/services/ip-zone.service';
 export class IpListComponent implements OnInit {
   loading = false;
   p: number = 1;
-  constructor(
-    public ipZoneService: IpZoneService,
-    // public modalService: ModalService
-  ) { }
+  constructor(public ipZoneService: IpZoneService ) { }
 
   ngOnInit(): void {
     this.loading = true;

@@ -8,6 +8,8 @@ export class ModalService {
 
   isVisible$ = new BehaviorSubject<boolean>(false);
   modalTooltip$ = new BehaviorSubject<boolean>(false);
+  dropdownMenu$ = new BehaviorSubject<boolean>(false);
+
 
   open() {
     this.isVisible$.next(true)
@@ -22,5 +24,12 @@ export class ModalService {
     setTimeout(()=>{
       this.modalTooltip$.next(false)
     }, 2000)
+  }
+
+  openDropdown() {
+    this.dropdownMenu$.next(true)
+  }
+  closeDropdown() {
+    this.dropdownMenu$.next(false)
   }
 }

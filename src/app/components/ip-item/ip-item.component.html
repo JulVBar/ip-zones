@@ -1,4 +1,4 @@
-<ul class="ip-list">
+<ul class="ip-list" *ngIf="ipItem">
   <li class="ip-list-item">
     <svg *ngIf="ipItem.priority" class="alarm-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32 ">
       <path d="M16 4C9.382813 4 4 9.382813 4 16C4 22.617188 9.382813 28 16 28C22.617188 28 28 22.617188 28 16C28 9.382813 22.617188 4 16 4 Z M 16 6C21.535156 6 26 10.464844 26 16C26 21.535156 21.535156 26 16 26C10.464844 26 6 21.535156 6 16C6 10.464844 10.464844 6 16 6 Z M 15 10L15 18L17 18L17 10 Z M 15 20L15 22L17 22L17 20Z"/>>
@@ -16,17 +16,30 @@
   <li class="ip-list-item">{{ipItem.date.toString().slice(0, 10)}}</li>
   <li class="ip-list-item dots">
     <svg
-    (click)="isOpen = !isOpen"
-    class="dots-svg"
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 32 32">
-      <path d="M6 14C4.894531 14 4 14.894531 4 16C4 17.105469 4.894531 18 6 18C7.105469 18 8 17.105469 8 16C8 14.894531 7.105469 14 6 14 Z M 16 14C14.894531 14 14 14.894531 14 16C14 17.105469 14.894531 18 16 18C17.105469 18 18 17.105469 18 16C18 14.894531 17.105469 14 16 14 Z M 26 14C24.894531 14 24 14.894531 24 16C24 17.105469 24.894531 18 26 18C27.105469 18 28 17.105469 28 16C28 14.894531 27.105469 14 26 14Z"/>
+      (click)="isOpen = true"
+      class="dots-svg"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 32 32">
+        <path d="M6 14C4.894531 14 4 14.894531 4 16C4 17.105469 4.894531 18 6 18C7.105469 18 8 17.105469 8 16C8 14.894531 7.105469 14 6 14 Z M 16 14C14.894531 14 14 14.894531 14 16C14 17.105469 14.894531 18 16 18C17.105469 18 18 17.105469 18 16C18 14.894531 17.105469 14 16 14 Z M 26 14C24.894531 14 24 14.894531 24 16C24 17.105469 24.894531 18 26 18C27.105469 18 28 17.105469 28 16C28 14.894531 27.105469 14 26 14Z"/>
     </svg>
-    <div *ngIf="isOpen" class="dots-menu">
-      <div class="dots-menu-item">{{ipItem.signed ? 'Sing out' : 'Sing up'}}</div>
-      <div class="dots-menu-item">{{ipItem.priority ? 'Remove priority' : 'Add priority'}}</div>
-      <div class="dots-menu-item">Edit</div>
-      <div class="dots-menu-item">Delete</div>
+    <div *ngIf="isOpen" class="dots">
+      <div  class="dots-wrapper" (click)="isOpen = false"></div>
+      <div class="dots-menu">
+        <div
+          class="dots-menu-item"
+          (click)="setSigned(ipItem)"
+        >
+          {{ipItem.signed ? 'Sing out' : 'Sing up'}}
+        </div>
+        <div
+          class="dots-menu-item"
+          (click)="setPriority(ipItem)"
+        >
+          {{ipItem.priority ? 'Remove priority' : 'Add priority'}}
+        </div>
+        <div class="dots-menu-item">Edit</div>
+        <div class="dots-menu-item" (click)="deleteItem(ipItem.id)">Delete</div>
+      </div>
     </div>
   </li>
 </ul>

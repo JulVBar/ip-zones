@@ -14,12 +14,16 @@
   <div class="ip-container">
     <!-- <app-fetch-error></app-fetch-error> -->
     <app-loader *ngIf="loading"></app-loader>
-    <div *ngIf="ipZoneService.ipItems">
-      <app-ip-item
-        *ngFor="let ipItem of ipZoneService.ipItems | paginate: { itemsPerPage: 10, currentPage: p }"
-        [ipItem]="ipItem"
-      >
-      </app-ip-item>
+    <div *ngIf="ipZoneService.ipItems && ipZoneService.ipItems.length < 1">
+      <img src="/src/assets/images/Ghost.gif" alt="ghost">
+      <p>Empty list</p>
+    </div>
+      <div *ngIf="ipZoneService.ipItems && ipZoneService.ipItems.length > 0">
+        <app-ip-item
+          *ngFor="let ipItem of ipZoneService.ipItems | paginate: { itemsPerPage: 10, currentPage: p }"
+          [ipItem]="ipItem"
+        >
+        </app-ip-item>
     </div>
 
 
