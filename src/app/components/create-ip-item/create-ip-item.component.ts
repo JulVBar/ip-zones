@@ -3,7 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { IpZoneService } from 'src/app/services/ip-zone.service';
 import {ModalService} from '../../services/modal.service';
 const Netmask = require('netmask').Netmask;
-
+import { IIpItem } from 'src/app/models/ip-item';
 @Component({
   selector: 'app-create-ip-item',
   templateUrl: './create-ip-item.component.html',
@@ -12,6 +12,8 @@ const Netmask = require('netmask').Netmask;
 export class CreateIpItemComponent implements OnInit {
   zones = ['pr', 'nev', 'kl'];
   isLoading = false;
+  isOpenForm = false;
+
   constructor(
     private ipZoneService: IpZoneService,
     private modalService: ModalService)
@@ -79,6 +81,7 @@ export class CreateIpItemComponent implements OnInit {
 
   submit() {
     this.isLoading = true;
+
     const ipSrting: string = this.form.value.net1 + '.' +
                     this.form.value.net2 + '.' +
                     this.form.value.net3 + '.' +
@@ -110,7 +113,15 @@ export class CreateIpItemComponent implements OnInit {
     }).subscribe(() => {
       this.isLoading = false;
       this.modalService.open();
-      this.form.reset();
+      this.form.setValue({
+        ipzone: 'pr',
+        net1: 10,
+        net2: 0,
+        net3: 0,
+        net4: 0,
+        net5: 0,
+        vlan: 1,
+      });
     })
   }
 }

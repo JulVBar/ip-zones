@@ -28,10 +28,10 @@ export class IpZoneService {
     }).pipe(
       delay(200),
       tap(items => {
-        if (this.ipItems.length > 0)  this.ipItems = items.reverse();
+        if (items.length > 0) this.ipItems = items.reverse();
       }),
       tap(items => {
-        if (this.ipItems.length > 0) this.lastId = items[0].id;
+        if (items.length > 0) this.lastId = items[0].id;
       }),
       catchError(this.errorHandler.bind(this))
     )

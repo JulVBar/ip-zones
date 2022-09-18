@@ -11,6 +11,7 @@ export class IpItemComponent implements OnInit {
   @Input() ipItem: IIpItem;
 
   isOpen = false;
+  isOpenModal = false;
 
   constructor(
     public ipZoneService: IpZoneService,
@@ -20,6 +21,12 @@ export class IpItemComponent implements OnInit {
   deleteItem(id: number) {
     this.ipZoneService.delete(id).subscribe();
     this.isOpen = false;
+  }
+
+  editItem(item: IIpItem) {
+    this.modalService.openEditForm();
+    this.isOpen = false;
+    this.isOpenModal = true;
   }
 
   setSigned(item: IIpItem) {

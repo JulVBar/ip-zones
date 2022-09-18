@@ -22,6 +22,7 @@ import { ReactiveFormsModule }from '@angular/forms';
 import { ModalComponent } from './components/modal/modal.component';
 import { ModalCreateSuccessComponent } from './components/modal-create-success/modal-create-success.component';
 import { CopyStringComponent } from './components/copy-string/copy-string.component';
+import { EmptyPlaceholderComponent } from './components/empty-placeholder/empty-placeholder.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { CopyStringComponent } from './components/copy-string/copy-string.compon
     ModalComponent,
     ModalCreateSuccessComponent,
     CopyStringComponent,
+    EmptyPlaceholderComponent,
   ],
   imports: [
     BrowserModule,

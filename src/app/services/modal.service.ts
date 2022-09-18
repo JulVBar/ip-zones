@@ -9,27 +9,34 @@ export class ModalService {
   isVisible$ = new BehaviorSubject<boolean>(false);
   modalTooltip$ = new BehaviorSubject<boolean>(false);
   dropdownMenu$ = new BehaviorSubject<boolean>(false);
+  editFormModal$ = new BehaviorSubject<boolean>(true);
 
 
   open() {
-    this.isVisible$.next(true)
+    this.isVisible$.next(true);
+  }
+  close() {
+    this.isVisible$.next(false);
   }
 
-  close() {
-    this.isVisible$.next(false)
+  openEditForm() {
+    this.editFormModal$.next(true);
+  }
+  closeEditForm() {
+    this.editFormModal$.next(false);
   }
 
   auto() {
-    this.modalTooltip$.next(true)
+    this.modalTooltip$.next(true);
     setTimeout(()=>{
-      this.modalTooltip$.next(false)
+      this.modalTooltip$.next(false);
     }, 2000)
   }
 
   openDropdown() {
-    this.dropdownMenu$.next(true)
+    this.dropdownMenu$.next(true);
   }
   closeDropdown() {
-    this.dropdownMenu$.next(false)
+    this.dropdownMenu$.next(false);
   }
 }
