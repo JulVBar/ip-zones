@@ -1,6 +1,21 @@
 @import '../../../assets/styles/variables.scss';
 
 .home {
+  min-height: 100vh;
+  &-inner {
+    display: flex;
+    min-height: 100vh;
+  }
+  &-panel {
+    width: 26rem;
+    background: $light-grey;
+    border-right: 1px solid $border-grey;
+    min-height: 100vh;
+    padding: 2rem;
+  }
+  &-content {
+    width: 100%;
+  }
   &-header {
     height: 10rem;
     width: 100%;

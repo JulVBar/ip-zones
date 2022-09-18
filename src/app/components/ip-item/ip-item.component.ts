@@ -23,12 +23,6 @@ export class IpItemComponent implements OnInit {
     this.isOpen = false;
   }
 
-  editItem(item: IIpItem) {
-    this.modalService.openEditForm();
-    this.isOpen = false;
-    this.isOpenModal = true;
-  }
-
   setSigned(item: IIpItem) {
     const newItem = {
       ...item,

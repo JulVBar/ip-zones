@@ -52,17 +52,6 @@ button {
     object-fit: cover;
 }
 
-.page {
-  min-height: 100vh;
-    &-inner {
-      display: flex;
-      min-height: 100vh;
-    }
-    &-content {
-      width: 100%;
-    }
-}
-
 header {
   flex: 0 0 6.875rem;
 }

@@ -3,7 +3,6 @@ import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http'
 import { catchError, delay, Observable, tap, throwError } from 'rxjs';
 import { IIpItem } from '../models/ip-item';
 import { ErrorService } from './error.service';
-import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -28,10 +27,10 @@ export class IpZoneService {
     }).pipe(
       delay(200),
       tap(items => {
-        if (items.length > 0) this.ipItems = items.reverse();
-      }),
-      tap(items => {
-        if (items.length > 0) this.lastId = items[0].id;
+        if (items.length > 0) {
+          this.ipItems = items.reverse();
+          this.lastId = items[0].id;
+        }
       }),
       catchError(this.errorHandler.bind(this))
     )

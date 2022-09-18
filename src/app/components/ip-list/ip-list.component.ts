@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { IpZoneService } from 'src/app/services/ip-zone.service';
-
+import { Component, OnInit, Input } from '@angular/core';
+import { IIpItem } from '../../models/ip-item';
 
 @Component({
   selector: 'app-ip-list',
@@ -9,16 +8,13 @@ import { IpZoneService } from 'src/app/services/ip-zone.service';
 })
 
 export class IpListComponent implements OnInit {
-  loading = false;
-  p: number = 1;
-  constructor(public ipZoneService: IpZoneService ) { }
+  @Input() ipItems: IIpItem[];
+  @Input() isLoading: boolean;
 
-  ngOnInit(): void {
-    this.loading = true;
-    this.ipZoneService.getAll().subscribe(() => {
-      this.loading = false
-    })
-  }
+  p: number = 1;
+  constructor() {}
+
+  ngOnInit(): void {}
 
   updatelist(): void {
     window.location.reload();

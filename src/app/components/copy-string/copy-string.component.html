@@ -7,12 +7,12 @@
   </div>
   <div class="copy-title">Recently added string</div>
   <div class="copy-content">
-    <div *ngIf="loading" class="copy-loader">
+    <div *ngIf="isLoading" class="copy-loader">
       <span class="loading-dots"></span>
     </div>
-    <div *ngIf="this.ipZoneService.ipItems[0]?.code" class="copy-block" >
-      <div class="copy-code">{{this.ipZoneService.ipItems[0].code}}</div>
-      <div class="copy-btn" (click)="copyText(this.ipZoneService.ipItems[0].code)">
+    <div *ngIf="this.ipItems[0]?.code" class="copy-block" >
+      <div class="copy-code">{{this.ipItems[0].code}}</div>
+      <div class="copy-btn" (click)="copyText(this.ipItems[0].code)">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
           <path d="M4 4L4 24L11 24L11 22L6 22L6 6L18 6L18 7L20 7L20 4 Z M 12 8L12 28L28 28L28 8 Z M 14 10L26 10L26 26L14 26Z"/>
         </svg>

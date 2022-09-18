@@ -8,7 +8,6 @@ import { MapPageComponent } from './pages/map-page/map-page.component';
 import { HeaderComponent } from './components/header/header.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { PanelComponent } from './components/panel/panel.component';
 import { UsernameComponent } from './components/username/username.component';
 import { SearchPanelComponent } from './components/search-panel/search-panel.component';
 import { IpListComponent } from './components/ip-list/ip-list.component';
@@ -32,7 +31,6 @@ import { EmptyPlaceholderComponent } from './components/empty-placeholder/empty-
     HeaderComponent,
     NavigationComponent,
     SidebarComponent,
-    PanelComponent,
     UsernameComponent,
     SearchPanelComponent,
     IpListComponent,

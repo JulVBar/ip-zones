@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core'
 import {BehaviorSubject} from 'rxjs'
-
+import { catchError, delay, Observable, tap, throwError } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -11,19 +11,11 @@ export class ModalService {
   dropdownMenu$ = new BehaviorSubject<boolean>(false);
   editFormModal$ = new BehaviorSubject<boolean>(true);
 
-
   open() {
     this.isVisible$.next(true);
   }
   close() {
     this.isVisible$.next(false);
-  }
-
-  openEditForm() {
-    this.editFormModal$.next(true);
-  }
-  closeEditForm() {
-    this.editFormModal$.next(false);
   }
 
   auto() {

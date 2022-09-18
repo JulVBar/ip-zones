@@ -12,7 +12,6 @@ import { IIpItem } from 'src/app/models/ip-item';
 export class CreateIpItemComponent implements OnInit {
   zones = ['pr', 'nev', 'kl'];
   isLoading = false;
-  isOpenForm = false;
 
   constructor(
     private ipZoneService: IpZoneService,
