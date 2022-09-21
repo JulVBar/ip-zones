@@ -54,9 +54,6 @@
               ],
               "outputHashing": "all"
             },
-            "github-pages": {
-              "baseHref": "https://julvbar.github.io/ip-zones/"
-            },
             "development": {
               "buildOptimizer": false,
               "optimization": false,
