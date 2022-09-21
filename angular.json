@@ -17,7 +17,8 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "docs/ip-zone",
+            "outputPath": "dist/ip-zone",
+            "baseHref": "https://julvbar.github.io/ip-zones/",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
