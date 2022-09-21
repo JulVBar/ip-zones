@@ -1,0 +1,110 @@
+@import './variables.scss';
+
+.ip {
+  &-wrapper {
+    width: 100%;
+    padding: 0 2rem;
+  }
+
+  &-title {
+    color: $grey;
+  }
+
+  &-list {
+    width: 100%;
+    border-bottom: 1px solid $light-grey;
+    padding: 1rem 0.3rem;
+    display: flex;
+
+    &-item {
+      margin-right: 2rem;
+      display: flex;
+      align-items: center;
+      &.signed {
+        padding-left: 1.5rem;
+        div {
+          width: 0.7rem;
+          height: 0.7rem;
+          border-radius: 50%;
+          background: $red;
+        }
+        &.active div {
+          background: $green;
+        }
+      }
+      &:nth-child(1),
+      &:nth-child(9) {
+        width: 2%;
+      }
+      &:nth-child(2),
+      &:nth-child(3),
+      &:nth-child(4) {
+        width: 15%;
+      }
+      &:nth-child(5),
+      &:nth-child(6),
+      &:nth-child(7) {
+        width: 7%;
+      }
+      &:nth-child(8) {
+        width: 10%;
+      }
+    }
+  }
+}
+
+.dots-svg {
+  fill: $grey;
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+}
+.alarm-svg {
+  fill: $yellow;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.dots {
+  position: relative;
+  &-menu {
+    position: absolute;
+    z-index: 999;
+    top: 2rem;
+    left: -8rem;
+    width: 10rem;
+    box-shadow: $box-shadow;
+    background: $light-grey;
+    &-item {
+      padding: 0.5rem;
+      transition: all .2s linear;
+      cursor: pointer;
+      &:hover {
+        background: $white;
+      }
+    }
+  }
+  &-wrapper {
+    background: transparent;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+  }
+}
+
+//zone color
+
+.pr {
+  color: $primary;
+}
+.nev {
+  color: $yellow;
+}
+.cen {
+  color: $green;
+}
