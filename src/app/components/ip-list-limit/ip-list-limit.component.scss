@@ -1,0 +1,19 @@
+@import '../../../assets/styles/variables.scss';
+
+.limits {
+  display: flex;
+  align-items: center;
+  position: relative;
+  &-text {
+    margin-right: 2rem;
+  }
+  &-alarm {
+    color: $red;
+  }
+  &-warning {
+    color: $red;
+    position: absolute;
+    top: 3rem;
+    left: 0;
+  }
+}

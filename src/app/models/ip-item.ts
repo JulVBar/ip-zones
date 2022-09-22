@@ -3,12 +3,10 @@ export interface IIpItem {
   code: string;
   net: string;
   gate: string;
-  ip_zone: {
-    zone_id: number;
-    zone_name: string | null | undefined;
-  },
-  vlan: number | null | undefined;
+  zone: string;
+  vlan: number;
   signed: boolean;
   date: Date;
   priority: boolean;
+  [key: string]: any;
 }

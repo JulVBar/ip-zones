@@ -1,0 +1,27 @@
+
+<div *ngIf="isLoading" class="fixed-wrapper">
+  <div class="fixed-content-center">
+    <div class="loading-circle"></div>
+  </div>
+</div>
+
+<div
+  *ngIf="modalService.currentModalId === modalId"
+  class="confirm-modal"
+>
+  <p>Are you sure you want to delete 20 items ?</p>
+  <div class="confirm-modal-btns">
+    <button
+      class="button-blue"
+      (click)="clearDataBase()"
+    >
+        Confirm
+    </button>
+    <button
+      class="button-blue"
+      (click)="modalService.close()"
+      >
+        Cancel
+      </button>
+  </div>
+</div>

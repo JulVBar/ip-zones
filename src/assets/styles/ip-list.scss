@@ -8,6 +8,22 @@
 
   &-title {
     color: $grey;
+    transition: all .2s linear;
+    cursor: pointer;
+    svg {
+      fill: $green;
+      width: 1.5rem;
+      height: 1.5rem;
+      margin-left: 0.6rem;
+      opacity: 0;
+      transition: all .2s linear;
+    }
+    &:hover {
+      color: $primary;
+      svg {
+        opacity: 1;
+      }
+    }
   }
 
   &-list {

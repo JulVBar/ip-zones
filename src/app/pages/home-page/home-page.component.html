@@ -3,16 +3,29 @@
 
     <div class="home-panel">
       <app-create-ip-item></app-create-ip-item>
-      <app-copy-string
-        [ipItems]="ipZoneService.ipItems"
-        [isLoading]="isLoading">
-      </app-copy-string>
+      <app-copy-string></app-copy-string>
     </div>
 
     <div class="home-content">
       <div class="home-header">
         <app-username></app-username>
         <app-search-panel></app-search-panel>
+      </div>
+
+      <div class="home-top">
+        <div>
+          <button
+            class="button-blue"
+            (click)="updatelist()">Update list</button>
+        </div>
+        <app-ip-list-limit
+          [amount]="ipZoneService.ipItems.length"
+        ></app-ip-list-limit>
+        <div>
+          <button
+            class="button-blue"
+            (click)="generateList()">100</button>
+        </div>
       </div>
 
       <app-ip-list
@@ -28,4 +41,5 @@
 
 <app-modal *ngIf="modalService.isVisible$ | async">
   <app-modal-create-success></app-modal-create-success>
+  <app-modal-delete-all-confirm></app-modal-delete-all-confirm>
 </app-modal>

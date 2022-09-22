@@ -1,4 +1,7 @@
-<div class="success-box-wrapper">
+<div
+  *ngIf="modalService.currentModalId === modalId"
+  class="success-box-wrapper"
+>
   <div id="success-box">
     <div class="face">
       <div class="eye"></div>

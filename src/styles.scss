@@ -103,3 +103,42 @@ main {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.tooltip {
+  animation: fadeIn 0.5s;
+  border-radius: $br;
+  background: $primary;
+  color: $white;
+  padding: 1rem 3rem;
+}
+
+.loading-circle {
+  width: 10px;
+  height: 10px;
+  margin: 0 auto;
+  padding: 10px;
+  border: 7px dashed $primary;
+  border-radius: 100%;
+  animation: rotate 1.5s 0.3s cubic-bezier(0.17, 0.37, 0.43, 0.67) infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+  100% {
+		opacity: 1;
+	}
+}
