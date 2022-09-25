@@ -1,34 +1,39 @@
-import {Injectable} from '@angular/core'
-import {BehaviorSubject} from 'rxjs'
-import { catchError, delay, Observable, tap, throwError } from 'rxjs';
+import {Injectable} from '@angular/core';
+import {BehaviorSubject, Subject} from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
-export class ModalService {
 
+export class ModalService {
   isVisible$ = new BehaviorSubject<boolean>(false);
   modalTooltip$ = new BehaviorSubject<boolean>(false);
-  dropdownMenu$ = new BehaviorSubject<boolean>(false);
-  editFormModal$ = new BehaviorSubject<boolean>(true);
+  currentModalId: string;
+  currentTooltip: string;
 
-  open() {
+  private isCreated = new Subject<string>();
+  isCreatedStream$ = this.isCreated.asObservable();
+
+  isCreatedFn(code: string) {
+    this.isCreated.next(code);
+  }
+
+  open(id: string) {
     this.isVisible$.next(true);
+    this.currentModalId = id;
+    document.body.classList.add('no-scroll');
   }
   close() {
     this.isVisible$.next(false);
+    document.body.classList.remove('no-scroll');
   }
 
-  auto() {
+  auto(id: string) {
     this.modalTooltip$.next(true);
+    this.currentTooltip = id;
     setTimeout(()=>{
       this.modalTooltip$.next(false);
+      this.currentTooltip = '';
     }, 2000)
-  }
-
-  openDropdown() {
-    this.dropdownMenu$.next(true);
-  }
-  closeDropdown() {
-    this.dropdownMenu$.next(false);
   }
 }

@@ -22,6 +22,10 @@ import { ModalComponent } from './components/modal/modal.component';
 import { ModalCreateSuccessComponent } from './components/modal-create-success/modal-create-success.component';
 import { CopyStringComponent } from './components/copy-string/copy-string.component';
 import { EmptyPlaceholderComponent } from './components/empty-placeholder/empty-placeholder.component';
+import { SortPipe } from './pipes/sort.pipe';
+import { IpListLimitComponent } from './components/ip-list-limit/ip-list-limit.component';
+import { ModalDeleteAllConfirmComponent } from './components/modal-delete-all-confirm/modal-delete-all-confirm.component';
+import { LoadingScreenComponent } from './components/loading-screen/loading-screen.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +46,10 @@ import { EmptyPlaceholderComponent } from './components/empty-placeholder/empty-
     ModalCreateSuccessComponent,
     CopyStringComponent,
     EmptyPlaceholderComponent,
+    SortPipe,
+    IpListLimitComponent,
+    ModalDeleteAllConfirmComponent,
+    LoadingScreenComponent,
   ],
   imports: [
     BrowserModule,

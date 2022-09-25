@@ -1,0 +1,9 @@
+<div class="limits">
+  <div class="limits-text">BD filled: <span [ngClass]="{'limits-alarm': amount > 99}">{{amount}}</span> from 100</div>
+  <div class="limits-btn">
+    <button class="button-blue" (click)="openConfirmModal('delete-all-modal')">Delete 20 items</button>
+  </div>
+  <div *ngIf="amount > 99" class="limits-warning">
+    DB is full! Clean up BD before adding!
+  </div>
+</div>

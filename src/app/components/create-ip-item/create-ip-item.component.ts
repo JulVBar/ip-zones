@@ -3,14 +3,13 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { IpZoneService } from 'src/app/services/ip-zone.service';
 import {ModalService} from '../../services/modal.service';
 const Netmask = require('netmask').Netmask;
-import { IIpItem } from 'src/app/models/ip-item';
 @Component({
   selector: 'app-create-ip-item',
   templateUrl: './create-ip-item.component.html',
   styleUrls: ['./create-ip-item.component.scss']
 })
 export class CreateIpItemComponent implements OnInit {
-  zones = ['pr', 'nev', 'kl'];
+  zones = ['pr', 'nv', 'kl', 'ks', 'vb', 'ms', 'pd', 'kv', 'ps', 'pg', 'vs', 'cn', 'ad', 'kr', 'ksh', 'kp', 'kg'].sort();
   isLoading = false;
 
   constructor(
@@ -19,7 +18,7 @@ export class CreateIpItemComponent implements OnInit {
     { }
 
   form = new FormGroup({
-    ipzone: new FormControl<string>('pr', [
+    ipzone: new FormControl<string>('ad', [
       Validators.required,
     ]),
     net1: new FormControl<number>(10, [
@@ -93,7 +92,7 @@ export class CreateIpItemComponent implements OnInit {
     const secondIndex = reversedHost.indexOf('S');
     const subnet = reversedHost.slice(firstIndex, secondIndex);
 
-    this.ipZoneService.create({
+    const newIpItem = {
       id: +this.ipZoneService.lastId + 1 as number,
       net: ipSrting as string,
       gate: hostMin as string,
@@ -101,19 +100,19 @@ export class CreateIpItemComponent implements OnInit {
         this.form.value.net2 + '-' +
         subnet + '-' +
         this.form.value.vlan as string,
-      ip_zone: {
-        zone_id: 100 as number,
-        zone_name: this.form.value.ipzone as string,
-      },
+      zone: this.form.value.ipzone as string,
       vlan: this.form.value.vlan as number,
       signed: false as boolean,
       date: new Date as Date,
       priority: false as boolean
-    }).subscribe(() => {
+    }
+
+    this.ipZoneService.create(newIpItem).subscribe(() => {
       this.isLoading = false;
-      this.modalService.open();
+      this.modalService.open('success-modal');
+      this.modalService.isCreatedFn(newIpItem.code);
       this.form.setValue({
-        ipzone: 'pr',
+        ipzone: 'ad',
         net1: 10,
         net2: 0,
         net3: 0,

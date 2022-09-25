@@ -1,15 +1,19 @@
 
 <div class="ip-wrapper">
   <ul class="ip-list">
-    <li class="ip-list-item ip-title"></li>
-    <li class="ip-list-item ip-title">Type</li>
-    <li class="ip-list-item ip-title">Net</li>
-    <li class="ip-list-item ip-title">Gate</li>
-    <li class="ip-list-item ip-title">Ip zone</li>
-    <li class="ip-list-item ip-title">Vlan</li>
-    <li class="ip-list-item ip-title">Signed</li>
-    <li class="ip-list-item ip-title">Date</li>
-    <li class="ip-list-item ip-title"></li>
+    <li
+      *ngFor="let title of columnTitles"
+      class="ip-list-item ip-title"
+      (click)="sortBy(title.name)"
+    >
+      {{ title.name | titlecase }}
+      <svg *ngIf="title.sortable && isDesc" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+        <path d="M8.1894531 5L7.9707031 5.6601562L6.0292969 11L6 11L6 11.060547L5.0605469 13.660156L5 13.810547L5 15L7 15L7 14.160156L7.4101562 13L10.589844 13L11 14.160156L11 15L13 15L13 13.810547L12.939453 13.660156L12 11.060547L12 11L11.970703 11L10.029297 5.6601562L9.8105469 5L8.1894531 5 z M 23 5.5L22.279297 6.1894531L18 10.5L19.410156 11.910156L22 9.3105469L22 28L24 28L24 9.3105469L26.589844 11.910156L28 10.5L23.720703 6.1894531L23 5.5 z M 9 8.6601562L9.8398438 11L8.1601562 11L9 8.6601562 z M 5 17L5 19L10.560547 19L5.2792969 24.279297L5 24.589844L5 27L13 27L13 25L7.4394531 25L12.720703 19.720703L13 19.410156L13 17L5 17 z"/>
+      </svg>
+      <svg *ngIf="title.sortable && !isDesc" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+        <path d="M8.1875 5L7.96875 5.65625L6.03125 11L6 11L6 11.0625L5.0625 13.65625L5 13.8125L5 15L7 15L7 14.15625L7.40625 13L10.59375 13L11 14.15625L11 15L13 15L13 13.8125L12.9375 13.65625L12 11.0625L12 11L11.96875 11L10.03125 5.65625L9.8125 5 Z M 22 5L22 23.6875L19.40625 21.09375L18 22.5L22.28125 26.8125L23 27.5L23.71875 26.8125L28 22.5L26.59375 21.09375L24 23.6875L24 5 Z M 9 8.65625L9.84375 11L8.15625 11 Z M 5 17L5 19L10.5625 19L5.28125 24.28125L5 24.59375L5 27L13 27L13 25L7.4375 25L12.71875 19.71875L13 19.40625L13 17Z"/>
+      </svg>
+    </li>
   </ul>
   <div class="ip-container">
     <app-loader *ngIf="isLoading"></app-loader>
@@ -17,7 +21,7 @@
 
     <div *ngIf="ipItems.length > 0">
       <app-ip-item
-        *ngFor="let ipItem of ipItems | paginate: { itemsPerPage: 10, currentPage: p }"
+        *ngFor="let ipItem of ipItems | sort:sortingColumn:isDesc | paginate: { itemsPerPage: 9, currentPage: p }"
         [ipItem]="ipItem"
       >
       </app-ip-item>
@@ -25,11 +29,6 @@
 
   </div>
   <div class="ip-footer">
-    <div>
-      <button
-        class="button-blue"
-        (click)="updatelist()">Update</button>
-    </div>
     <div class="pagination">
       <pagination-controls (pageChange)="p = $event"></pagination-controls>
     </div>

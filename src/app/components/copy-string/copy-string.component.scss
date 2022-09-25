@@ -1,13 +1,5 @@
 @import '../../../assets/styles/variables.scss';
 
-@keyframes scaleIn {
-	0% {
-		transform: scale(0.7);
-	}
-	100% {
-		transform: scale(1);
-	}
-}
 .copy {
   &-wrapper {
     background: $white;
@@ -18,16 +10,10 @@
     position: relative;
   }
   &-tooltip {
-    animation: scale 1s;
-    transform: scale(0.7);
     position: absolute;
     top: -1rem;
     right: -10rem;
     z-index: 999;
-    padding: 1rem 3rem;
-    border-radius: $br;
-    background: $primary;
-    color: $white;
   }
 
   &-title {

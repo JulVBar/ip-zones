@@ -8,8 +8,7 @@
   <li class="ip-list-item">{{ipItem.net}}</li>
   <li class="ip-list-item">{{ipItem.gate}}</li>
   <li class="ip-list-item">
-    <span class={{ipItem.ip_zone.zone_name}}>{{ipItem.ip_zone.zone_name | uppercase}}</span>
-    <!-- <span>{{ipItem.ip_zone.zone_id}}</span> -->
+    <span class={{ipItem.zone}}>{{ipItem.zone | uppercase}}</span>
   </li>
   <li class="ip-list-item">{{ipItem.vlan}}</li>
   <li [ngClass]="{'active': ipItem.signed}" class="ip-list-item signed"><div></div></li>
