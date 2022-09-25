@@ -9,7 +9,7 @@
     <div class="home-content">
       <div class="home-header">
         <app-username></app-username>
-        <app-search-panel></app-search-panel>
+        <app-search-panel (searchingEvent)="searchingLoad($event)"></app-search-panel>
       </div>
 
       <div class="home-top">
@@ -21,11 +21,11 @@
         <app-ip-list-limit
           [amount]="ipZoneService.ipItems.length"
         ></app-ip-list-limit>
-        <div>
+        <!-- <div>
           <button
             class="button-blue"
-            (click)="generateList()">100</button>
-        </div>
+            (click)="generateList()">Generate 100</button>
+        </div> -->
       </div>
 
       <app-ip-list

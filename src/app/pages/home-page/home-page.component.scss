@@ -1,16 +1,16 @@
 @import '../../../assets/styles/variables.scss';
 
 .home {
-  min-height: 100vh;
+  min-height: $full-h;
   &-inner {
     display: flex;
-    min-height: 100vh;
+    min-height: $full-h;
   }
   &-panel {
     width: 26rem;
     background: $light-grey;
     border-right: 1px solid $border-grey;
-    min-height: 100vh;
+    min-height: $full-h;
     padding: 2rem;
   }
   &-content {

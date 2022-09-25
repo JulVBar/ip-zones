@@ -109,18 +109,61 @@
     right: 0;
     bottom: 0;
     width: 100vw;
-    height: 100vh;
+    height: $full-h;
   }
 }
 
 //zone color
 
-.pr {
+.ad {
   color: $primary;
 }
-.nev {
+.cn {
   color: $yellow;
 }
-.cen {
+.kg {
   color: $green;
 }
+.kl {
+  color: $red;
+}
+.kp {
+  color: goldenrod;
+}
+.kr {
+  color: rgb(54, 41, 10);
+}
+.ks {
+  color: teal;
+}
+.ksh {
+  color: blueviolet;
+}
+.kv {
+  color: palevioletred;
+}
+.ms {
+  color: orange;
+}
+.nv {
+  color: olive;
+}
+.pd {
+  color: burlywood;
+}
+.pg {
+  color: violet;
+}
+.pr {
+  color: rgb(106, 25, 87);
+}
+.ps {
+  color: rgb(137, 28, 30);
+}
+.vb {
+  color: rgb(119, 144, 67);
+}
+.vs {
+  color: rgb(142, 73, 211);
+}
+

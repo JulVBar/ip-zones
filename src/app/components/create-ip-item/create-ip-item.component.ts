@@ -9,7 +9,7 @@ const Netmask = require('netmask').Netmask;
   styleUrls: ['./create-ip-item.component.scss']
 })
 export class CreateIpItemComponent implements OnInit {
-  zones = ['pr', 'nev', 'kl'];
+  zones = ['pr', 'nv', 'kl', 'ks', 'vb', 'ms', 'pd', 'kv', 'ps', 'pg', 'vs', 'cn', 'ad', 'kr', 'ksh', 'kp', 'kg'].sort();
   isLoading = false;
 
   constructor(
@@ -18,7 +18,7 @@ export class CreateIpItemComponent implements OnInit {
     { }
 
   form = new FormGroup({
-    ipzone: new FormControl<string>('pr', [
+    ipzone: new FormControl<string>('ad', [
       Validators.required,
     ]),
     net1: new FormControl<number>(10, [
@@ -112,7 +112,7 @@ export class CreateIpItemComponent implements OnInit {
       this.modalService.open('success-modal');
       this.modalService.isCreatedFn(newIpItem.code);
       this.form.setValue({
-        ipzone: 'pr',
+        ipzone: 'ad',
         net1: 10,
         net2: 0,
         net3: 0,

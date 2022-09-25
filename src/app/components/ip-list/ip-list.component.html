@@ -21,7 +21,7 @@
 
     <div *ngIf="ipItems.length > 0">
       <app-ip-item
-        *ngFor="let ipItem of ipItems | sort:sortingColumn:isDesc | paginate: { itemsPerPage: 10, currentPage: p }"
+        *ngFor="let ipItem of ipItems | sort:sortingColumn:isDesc | paginate: { itemsPerPage: 9, currentPage: p }"
         [ipItem]="ipItem"
       >
       </app-ip-item>

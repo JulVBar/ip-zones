@@ -1,12 +1,11 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Subject} from 'rxjs';
-import { catchError, delay, Observable, tap, throwError } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
 
 export class ModalService {
-
   isVisible$ = new BehaviorSubject<boolean>(false);
   modalTooltip$ = new BehaviorSubject<boolean>(false);
   currentModalId: string;
@@ -22,9 +21,11 @@ export class ModalService {
   open(id: string) {
     this.isVisible$.next(true);
     this.currentModalId = id;
+    document.body.classList.add('no-scroll');
   }
   close() {
     this.isVisible$.next(false);
+    document.body.classList.remove('no-scroll');
   }
 
   auto(id: string) {

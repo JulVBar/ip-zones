@@ -9,6 +9,7 @@ import { IpZoneService } from 'src/app/services/ip-zone.service';
 export class HomePageComponent implements OnInit {
   isLoading = false;
 
+
   constructor(public modalService: ModalService,
     public ipZoneService: IpZoneService ) { }
 
@@ -19,6 +20,9 @@ export class HomePageComponent implements OnInit {
     })
   }
 
+  searchingLoad(state: boolean) {
+    this.isLoading = state;
+  }
   updatelist(): void {
     window.location.reload();
   }

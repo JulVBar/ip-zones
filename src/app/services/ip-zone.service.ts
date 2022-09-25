@@ -20,11 +20,8 @@ export class IpZoneService {
   lastId = 0;
 
   getAll(): Observable<IIpItem[]> {
-    return this.http.get<IIpItem[]>(this.ipDataBase, {
-      params: new HttpParams({
-        fromObject: {page: '', limit: 10}
-      })
-    }).pipe(
+    return this.http.get<IIpItem[]>(this.ipDataBase)
+    .pipe(
       delay(200),
       tap(items => {
         if (items.length > 0) {
@@ -63,6 +60,18 @@ export class IpZoneService {
       .pipe(
         catchError(this.errorHandler.bind(this))
       )
+  }
+
+  search(term: string): Observable<IIpItem[]> {
+    const url = `${this.ipDataBase}?search=${term}`;
+    return this.http.get<IIpItem[]>(url)
+    .pipe(
+      delay(200),
+      tap(items => {
+        items.length > 0 ? this.ipItems = items.reverse() : [];
+      }),
+      catchError(this.errorHandler.bind(this))
+    )
   }
 
   private errorHandler(error: HttpErrorResponse) {

@@ -25,6 +25,7 @@ import { EmptyPlaceholderComponent } from './components/empty-placeholder/empty-
 import { SortPipe } from './pipes/sort.pipe';
 import { IpListLimitComponent } from './components/ip-list-limit/ip-list-limit.component';
 import { ModalDeleteAllConfirmComponent } from './components/modal-delete-all-confirm/modal-delete-all-confirm.component';
+import { LoadingScreenComponent } from './components/loading-screen/loading-screen.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { ModalDeleteAllConfirmComponent } from './components/modal-delete-all-co
     SortPipe,
     IpListLimitComponent,
     ModalDeleteAllConfirmComponent,
+    LoadingScreenComponent,
   ],
   imports: [
     BrowserModule,

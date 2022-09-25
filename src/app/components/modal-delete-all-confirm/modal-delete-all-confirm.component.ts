@@ -23,12 +23,12 @@ export class ModalDeleteAllConfirmComponent implements OnInit {
     this.isLoading = true;
 
     this.ipZoneService.ipItems.forEach((item, i) => {
-      if (i < 2) {
+      if (i < 20) {
         this.ipZoneService.delete(item.id).subscribe(
           () => {
             this.modalService.close();
             this.isLoading = false;
-            // показать тултип с успехом
+            this.modalService.open('success-modal');
           }
         )
       }
