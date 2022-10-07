@@ -26,7 +26,7 @@ import { SortPipe } from './pipes/sort.pipe';
 import { IpListLimitComponent } from './components/ip-list-limit/ip-list-limit.component';
 import { ModalDeleteAllConfirmComponent } from './components/modal-delete-all-confirm/modal-delete-all-confirm.component';
 import { LoadingScreenComponent } from './components/loading-screen/loading-screen.component';
-
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +56,8 @@ import { LoadingScreenComponent } from './components/loading-screen/loading-scre
     AppRoutingModule,
     HttpClientModule,
     NgxPaginationModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

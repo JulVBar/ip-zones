@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Clipboard } from '@angular/cdk/clipboard';
 import {ModalService} from '../../services/modal.service';
-import { IIpItem } from '../../models/ip-item';
 import { IpZoneService } from 'src/app/services/ip-zone.service';
 @Component({
   selector: 'app-copy-string',

@@ -10,7 +10,7 @@
     <div *ngIf="isLoading" class="copy-loader">
       <span class="loading-dots"></span>
     </div>
-    <div *ngIf="lastAddedCode" class="copy-block" >
+    <div *ngIf="ipZoneService.lastAddedCode" class="copy-block" >
       <div class="copy-code">{{lastAddedCode}}</div>
       <div class="copy-btn" (click)="copyText(lastAddedCode)">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">

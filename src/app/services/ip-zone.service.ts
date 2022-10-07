@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
-import { catchError, delay, Observable, tap, throwError } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { catchError, debounceTime, delay, Observable, tap, throwError } from 'rxjs';
 import { IIpItem } from '../models/ip-item';
 import { ErrorService } from './error.service';
 
@@ -18,6 +18,7 @@ export class IpZoneService {
 
   ipItems: IIpItem[] = [];
   lastId = 0;
+  lastAddedCode: string;
 
   getAll(): Observable<IIpItem[]> {
     return this.http.get<IIpItem[]>(this.ipDataBase)
@@ -27,6 +28,7 @@ export class IpZoneService {
         if (items.length > 0) {
           this.ipItems = items.reverse();
           this.lastId = items[0].id;
+          this.lastAddedCode = items[0].code;
         }
       }),
       catchError(this.errorHandler.bind(this))
@@ -66,9 +68,8 @@ export class IpZoneService {
     const url = `${this.ipDataBase}?search=${term}`;
     return this.http.get<IIpItem[]>(url)
     .pipe(
-      delay(200),
       tap(items => {
-        items.length > 0 ? this.ipItems = items.reverse() : [];
+        items.length > 0 ? this.ipItems = items.reverse() : this.ipItems = [];
       }),
       catchError(this.errorHandler.bind(this))
     )
