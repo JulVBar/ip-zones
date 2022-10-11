@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ModalService} from '../../services/modal.service';
 import { IpZoneService } from 'src/app/services/ip-zone.service';
+import { IIpItem } from 'src/app/models/ip-item';
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
@@ -23,9 +24,12 @@ export class HomePageComponent implements OnInit {
   searchingLoad(state: boolean) {
     this.isLoading = state;
   }
-  updatelist(): void {
-    window.location.reload();
+
+  createNewItem() {
+    this.modalService.openModal();
+    this.ipZoneService.setCurrentIpItem({} as IIpItem)
   }
+
   generateList(): void {
     let arr = [];
     for (let i = 0; i < 99; i++) {

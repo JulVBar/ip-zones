@@ -134,13 +134,14 @@
 
     <div class="form-buttons">
       <button
-      type="submit"
-      class="button-blue btn-success"
-      [disabled]="!form.valid"
-    >
-      Save
-    </button>
-      <button type="reset" class="button-blue ">Clear</button>
+        type="submit"
+        class="button-blue btn-success"
+        [disabled]="!form.valid"
+      >
+        Save
+      </button>
+      <button type="button" class="button-blue" (click)="closeForm()">Close</button>
+      <!-- <button *ngIf="ipZoneService.currentIpItem$ | async" type="reset" class="button-blue ">Cancel</button> -->
     </div>
   </form>
 </div>

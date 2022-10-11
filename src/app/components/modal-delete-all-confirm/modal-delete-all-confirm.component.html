@@ -1,10 +1,7 @@
 
 <app-loading-screen [isLoading]="isLoading"></app-loading-screen>
 
-<div
-  *ngIf="modalService.currentModalId === modalId"
-  class="confirm-modal"
->
+<div class="confirm-modal">
   <p>Are you sure you want to delete 20 items ?</p>
   <div class="confirm-modal-btns">
     <button

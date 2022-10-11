@@ -6,34 +6,36 @@ import {BehaviorSubject, Subject} from 'rxjs';
 })
 
 export class ModalService {
-  isVisible$ = new BehaviorSubject<boolean>(false);
+  modalForm$ = new BehaviorSubject<boolean>(false);
+  modalSuccess$ = new BehaviorSubject<boolean>(false);
+  modalConfirm$ = new BehaviorSubject<boolean>(false);
   modalTooltip$ = new BehaviorSubject<boolean>(false);
-  currentModalId: string;
-  currentTooltip: string;
 
-  private isCreated = new Subject<string>();
-  isCreatedStream$ = this.isCreated.asObservable();
-
-  isCreatedFn(code: string) {
-    this.isCreated.next(code);
+  close() {
+    this.modalForm$.next(false);
+    this.modalSuccess$.next(false);
+    this.modalConfirm$.next(false);
   }
 
-  open(id: string) {
-    this.isVisible$.next(true);
-    this.currentModalId = id;
+  openModal() {
+    this.modalForm$.next(true);
     document.body.classList.add('no-scroll');
   }
-  close() {
-    this.isVisible$.next(false);
-    document.body.classList.remove('no-scroll');
+
+  openSuccessModal() {
+    this.modalSuccess$.next(true);
+    document.body.classList.add('no-scroll');
   }
 
-  auto(id: string) {
+  openConfirmModal() {
+    this.modalConfirm$.next(true);
+    document.body.classList.add('no-scroll');
+  }
+
+  auto() {
     this.modalTooltip$.next(true);
-    this.currentTooltip = id;
     setTimeout(()=>{
       this.modalTooltip$.next(false);
-      this.currentTooltip = '';
     }, 2000)
   }
 }

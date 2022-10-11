@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { IIpItem } from 'src/app/models/ip-item';
 import { IpZoneService } from 'src/app/services/ip-zone.service';
 import {ModalService} from '../../services/modal.service';
 const Netmask = require('netmask').Netmask;
@@ -8,14 +9,51 @@ const Netmask = require('netmask').Netmask;
   templateUrl: './create-ip-item.component.html',
   styleUrls: ['./create-ip-item.component.scss']
 })
-export class CreateIpItemComponent implements OnInit {
-  zones = ['pr', 'nv', 'kl', 'ks', 'vb', 'ms', 'pd', 'kv', 'ps', 'pg', 'vs', 'cn', 'ad', 'kr', 'ksh', 'kp', 'kg'].sort();
+export class CreateIpItemComponent implements OnInit, OnDestroy {
+  // zones = ['pr', 'nv', 'kl', 'ks', 'vb', 'ms', 'pd', 'kv', 'ps', 'pg', 'vs', 'cn', 'ad', 'kr', 'ksh', 'kp', 'kg'].sort();
+  zones: string[];
   isLoading = false;
 
+  currentIpItem: IIpItem;
+  isEditForm: boolean;
+
   constructor(
-    private ipZoneService: IpZoneService,
+    public ipZoneService: IpZoneService,
     private modalService: ModalService)
-    { }
+    {
+      this.isEditForm = false;
+      this.ipZoneService.currentIpItemStream$.subscribe(
+        item => {
+          this.currentIpItem = item;
+          this.isEditForm = Boolean(this.currentIpItem.id);
+          console.log('sub')
+      });
+
+      if (this.isEditForm) {
+        const transformedIp = this.currentIpItem?.net?.replace('/', '.').split('.');
+        this.form.setValue({
+          ipzone: this.currentIpItem.zone,
+          net1: +transformedIp[0],
+          net2: +transformedIp[1],
+          net3: +transformedIp[2],
+          net4: +transformedIp[3],
+          net5: +transformedIp[4],
+          vlan: this.currentIpItem.vlan,
+        });
+      }
+    }
+
+  ngOnInit(): void {
+    this.ipZoneService.getAllDistricts().subscribe(
+      (disctricts) => this.zones = disctricts.sort());
+  }
+  ngOnDestroy(): void {
+ //отписаться
+  }
+
+  closeForm(): void {
+    this.modalService.close();
+  }
 
   form = new FormGroup({
     ipzone: new FormControl<string>('ad', [
@@ -74,9 +112,6 @@ export class CreateIpItemComponent implements OnInit {
     return this.form.controls.vlan as FormControl
   }
 
-  ngOnInit(): void {
-  }
-
   submit() {
     this.isLoading = true;
 
@@ -93,7 +128,7 @@ export class CreateIpItemComponent implements OnInit {
     const subnet = reversedHost.slice(firstIndex, secondIndex);
 
     const newIpItem = {
-      id: +this.ipZoneService.lastId + 1 as number,
+      id: this.currentIpItem.id || +this.ipZoneService.lastId + 1 as number,
       net: ipSrting as string,
       gate: hostMin as string,
       code: this.form.value.ipzone + '-' +
@@ -102,25 +137,25 @@ export class CreateIpItemComponent implements OnInit {
         this.form.value.vlan as string,
       zone: this.form.value.ipzone as string,
       vlan: this.form.value.vlan as number,
-      signed: false as boolean,
-      date: new Date as Date,
-      priority: false as boolean
+      signed: this.currentIpItem.signed || false as boolean,
+      date: this.currentIpItem.date || new Date as Date,
+      priority: this.currentIpItem.priority || false as boolean
     }
 
-    this.ipZoneService.create(newIpItem).subscribe(() => {
-      this.isLoading = false;
-      this.modalService.open('success-modal');
-      this.modalService.isCreatedFn(newIpItem.code);
-      this.form.setValue({
-        ipzone: 'ad',
-        net1: 10,
-        net2: 0,
-        net3: 0,
-        net4: 0,
-        net5: 0,
-        vlan: 1,
-      });
-    })
+    if (this.isEditForm) {
+      this.ipZoneService.put(newIpItem).subscribe(() => {
+        this.isLoading = false;
+        this.modalService.close();
+        this.modalService.openSuccessModal();
+      })
+    } else {
+      this.ipZoneService.create(newIpItem).subscribe(() => {
+        this.isLoading = false;
+        this.ipZoneService.setCreatedItem(newIpItem.code);
+        this.modalService.close();
+        this.modalService.openSuccessModal();
+      })
+    }
   }
 }
 

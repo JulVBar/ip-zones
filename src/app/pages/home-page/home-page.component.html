@@ -2,7 +2,6 @@
   <div class="home-inner">
 
     <div class="home-panel">
-      <app-create-ip-item></app-create-ip-item>
       <app-copy-string></app-copy-string>
     </div>
 
@@ -16,7 +15,9 @@
         <div>
           <button
             class="button-blue"
-            (click)="updatelist()">Update list</button>
+            (click)="createNewItem()">
+            Create new item
+          </button>
         </div>
         <app-ip-list-limit
           [amount]="ipZoneService.ipItems.length"
@@ -39,7 +40,12 @@
 
 <app-fetch-error></app-fetch-error>
 
-<app-modal *ngIf="modalService.isVisible$ | async">
+<app-modal *ngIf="modalService.modalForm$ | async">
+  <app-create-ip-item></app-create-ip-item>
+</app-modal>
+<app-modal *ngIf="modalService.modalSuccess$ | async">
   <app-modal-create-success></app-modal-create-success>
+</app-modal>
+<app-modal *ngIf="modalService.modalConfirm$ | async">
   <app-modal-delete-all-confirm></app-modal-delete-all-confirm>
 </app-modal>

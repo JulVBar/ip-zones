@@ -17,7 +17,7 @@ export class CopyStringComponent implements OnInit {
     public modalService: ModalService,
     public ipZoneService: IpZoneService)
   {
-    modalService.isCreatedStream$.subscribe(
+    ipZoneService.isCreatedStream$.subscribe(
       code => {
         this.lastAddedCode = code;
       });
@@ -33,6 +33,6 @@ export class CopyStringComponent implements OnInit {
 
   copyText(textToCopy: string) {
     this.clipboard.copy(textToCopy);
-    this.modalService.auto('copy-tooltip');
+    this.modalService.auto();
   }
 }

@@ -1,7 +1,7 @@
 <div class="copy-wrapper">
   <div
     class="copy-tooltip tooltip"
-    *ngIf="modalService.currentTooltip === tooltipId"
+    *ngIf="modalService.modalTooltip$ | async"
   >
     String copied
   </div>

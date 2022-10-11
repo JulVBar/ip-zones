@@ -11,8 +11,8 @@ export class IpListLimitComponent implements OnInit {
 
   constructor(public modalService: ModalService) { }
 
-  openConfirmModal(modalId: string): void {
-    this.modalService.open(modalId);
+  openConfirmModal(): void {
+    this.modalService.openConfirmModal();
   }
 
   ngOnInit(): void {

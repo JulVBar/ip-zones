@@ -28,7 +28,7 @@ export class ModalDeleteAllConfirmComponent implements OnInit {
           () => {
             this.modalService.close();
             this.isLoading = false;
-            this.modalService.open('success-modal');
+            this.modalService.openSuccessModal();
           }
         )
       }

@@ -1,184 +1,27 @@
-[
-  {
-   "id": 1,
-   "code": "pr-218.210-749",
-   "net": "10.218.210.0/24",
-   "gate": "10.218.210.0",
-   "ip_zone": {
-    "zone_id": 1024,
-    "zone_name": "pr"
-   },
-   "vlan": 749,
-   "signed": true,
-   "date": "10.09.2022",
-   "priority": false
-  },
-  {
-   "id": 2,
-   "code": "pr-218.210-749",
-   "net": "10.218.210.0/24",
-   "gate": "10.218.210.0",
-   "ip_zone": {
-    "zone_id": 1024,
-    "zone_name": "nev"
-   },
-   "vlan": 749,
-   "signed": false,
-   "date": "10.09.2022",
-   "priority": false
-  },
-  {
-   "id": 3,
-   "code": "pr-218.210-749",
-   "net": "10.218.210.0/24",
-   "gate": "10.218.210.0",
-   "ip_zone": {
-    "zone_id": 1024,
-    "zone_name": "cen"
-   },
-   "vlan": 749,
-   "signed": true,
-   "date": "10.09.2022",
-   "priority": true
-  },
-  {
-   "id": 4,
-   "code": "pr-218.210-749",
-   "net": "10.218.210.0/24",
-   "gate": "10.218.210.0",
-   "ip_zone": {
-    "zone_id": 1024,
-    "zone_name": "pr"
-   },
-   "vlan": 749,
-   "signed": false,
-   "date": "10.09.2022",
-   "priority": true
-  },
-  {
-   "id": 5,
-   "code": "pr-218.210-749",
-   "net": "10.218.210.0/24",
-   "gate": "10.218.210.0",
-   "ip_zone": {
-    "zone_id": 1024,
-    "zone_name": "pr"
-   },
-   "vlan": 749,
-   "signed": true,
-   "date": "10.09.2022",
-   "priority": false
-  },
-  {
-   "id": 6,
-   "code": "pr-218.210-749",
-   "net": "10.218.210.0/24",
-   "gate": "10.218.210.0",
-   "ip_zone": {
-    "zone_id": 1024,
-    "zone_name": "kl"
-   },
-   "vlan": 749,
-   "signed": true,
-   "date": "10.09.2022",
-   "priority": false
-  },
-  {
-   "id": 7,
-   "code": "pr-218.210-749",
-   "net": "10.218.210.0/24",
-   "gate": "10.218.210.0",
-   "ip_zone": {
-    "zone_id": 1024,
-    "zone_name": "pr"
-   },
-   "vlan": 749,
-   "signed": true,
-   "date": "10.09.2022",
-   "priority": false
-  },
-  {
-   "id": 8,
-   "code": "pr-218.210-749",
-   "net": "10.218.210.0/24",
-   "gate": "10.218.210.0",
-   "ip_zone": {
-    "zone_id": 1024,
-    "zone_name": "pr"
-   },
-   "vlan": 749,
-   "signed": true,
-   "date": "10.09.2022",
-   "priority": false
-  },
-  {
-   "id": 9,
-   "code": "pr-218.210-749",
-   "net": "10.218.210.0/24",
-   "gate": "10.218.210.0",
-   "ip_zone": {
-    "zone_id": 1024,
-    "zone_name": "pr"
-   },
-   "vlan": 749,
-   "signed": true,
-   "date": "10.09.2022",
-   "priority": false
-  },
-  {
-   "id": 10,
-   "code": "pr-218.210-749",
-   "net": "10.218.210.0/24",
-   "gate": "10.218.210.0",
-   "ip_zone": {
-    "zone_id": 1024,
-    "zone_name": "pr"
-   },
-   "vlan": 749,
-   "signed": true,
-   "date": "10.09.2022",
-   "priority": false
-  },
-  {
-   "id": 11,
-   "code": "pr-218.210-749",
-   "net": "10.218.210.0/24",
-   "gate": "10.218.210.0",
-   "ip_zone": {
-    "zone_id": 1024,
-    "zone_name": "nev"
-   },
-   "vlan": 749,
-   "signed": false,
-   "date": "10.09.2022",
-   "priority": false
-  },
-  {
-    "id": 12,
-    "code": "pr-218.210-749",
-    "net": "10.218.210.0/24",
-    "gate": "10.218.210.0",
-    "ip_zone": {
-     "zone_id": 1024,
-     "zone_name": "pr"
-    },
-    "vlan": 749,
-    "signed": false,
-    "date": "10.09.2022",
-    "priority": false
-   },
-   {
-    "id": 13,
-    "code": "pr-218.210-749",
-    "net": "10.218.210.0/24",
-    "gate": "10.218.210.0",
-    "ip_zone": {
-     "zone_id": 1024,
-     "zone_name": "kl"
-    },
-    "vlan": 749,
-    "signed": true,
-    "date": "10.09.2022",
-    "priority": false
-   }
- ]
+[{
+  "districts" : ["pr", "nv", "kl", "ks", "vb", "ms", "pd", "kv", "ps", "pg", "vs", "cn", "ad", "kr", "ksh", "kp", "kg"],
+  "ipitems" : [
+    {
+      "id": "43",
+      "net": "10.0.0.0/0",
+      "gate": "0.0.0.1",
+      "code": "kg-0-0-78",
+      "zone": "kg",
+      "vlan": 78,
+      "signed": true,
+      "date": "2022-09-25T12:07:52.692Z",
+      "priority": false
+      },
+    {
+      "id": "43",
+      "net": "10.0.0.0/0",
+      "gate": "0.0.0.1",
+      "code": "kg-0-0-78",
+      "zone": "kg",
+      "vlan": 78,
+      "signed": true,
+      "date": "2022-09-25T12:07:52.692Z",
+      "priority": false
+      }
+  ]
+}]

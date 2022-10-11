@@ -12,6 +12,7 @@ export class IpItemComponent implements OnInit {
 
   isOpen = false;
   isOpenModal = false;
+  isEdit = false;
 
   constructor(
     public ipZoneService: IpZoneService,
@@ -39,6 +40,12 @@ export class IpItemComponent implements OnInit {
     }
     this.ipZoneService.put(newItem).subscribe();
     this.isOpen = false;
+  }
+
+  editItem(item: IIpItem) {
+    this.modalService.openModal();
+    this.isOpen = false;
+    this.ipZoneService.setCurrentIpItem(item)
   }
 
   ngOnInit(): void {

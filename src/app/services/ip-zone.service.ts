@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { catchError, debounceTime, delay, Observable, tap, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, debounceTime, delay, Observable, Subject, tap, throwError } from 'rxjs';
 import { IIpItem } from '../models/ip-item';
 import { ErrorService } from './error.service';
 
@@ -9,6 +9,9 @@ import { ErrorService } from './error.service';
 })
 export class IpZoneService {
   ipDataBase = 'https://62f0bd3157311485d135bea7.mockapi.io/ipzones';
+  districtsUrl = 'https://62f0bd3157311485d135bea7.mockapi.io/districts';
+
+  currentIpItem$ = new Subject<IIpItem>();
 
   constructor(
     private http: HttpClient,
@@ -19,6 +22,16 @@ export class IpZoneService {
   ipItems: IIpItem[] = [];
   lastId = 0;
   lastAddedCode: string;
+
+  private isCreatedItem = new Subject<string>();
+  isCreatedStream$ = this.isCreatedItem.asObservable();
+
+  private currentIpItem = new BehaviorSubject<IIpItem>({} as IIpItem);
+  currentIpItemStream$ = this.currentIpItem.asObservable();
+
+  setCurrentIpItem(item: IIpItem) {
+    this.currentIpItem.next(item);
+  }
 
   getAll(): Observable<IIpItem[]> {
     return this.http.get<IIpItem[]>(this.ipDataBase)
@@ -75,8 +88,19 @@ export class IpZoneService {
     )
   }
 
+  setCreatedItem(code: string) {
+    this.isCreatedItem.next(code);
+  }
+
   private errorHandler(error: HttpErrorResponse) {
     this.errorService.handle(error.message)
     return throwError(() => error.message)
+  }
+
+  getAllDistricts(): Observable<string[]> {
+    return this.http.get<string[]>(this.districtsUrl)
+    .pipe(
+      catchError(this.errorHandler.bind(this))
+    )
   }
 }

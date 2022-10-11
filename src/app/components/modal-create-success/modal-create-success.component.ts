@@ -7,8 +7,6 @@ import { ModalService } from '../../services/modal.service';
   styleUrls: ['./modal-create-success.component.scss']
 })
 export class ModalCreateSuccessComponent implements OnInit {
-  modalId: string = 'success-modal';
-
   constructor(public modalService: ModalService) { }
 
   ngOnInit(): void {

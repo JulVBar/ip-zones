@@ -37,6 +37,9 @@
           {{ipItem.priority ? 'Remove priority' : 'Add priority'}}
         </div>
         <div class="dots-menu-item" (click)="deleteItem(ipItem.id)">Delete</div>
+
+        <div class="dots-menu-item" (click)="editItem(ipItem)">Edit</div>
+
       </div>
     </div>
   </li>

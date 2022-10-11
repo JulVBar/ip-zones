@@ -49,7 +49,7 @@ import { FormsModule } from '@angular/forms';
     SortPipe,
     IpListLimitComponent,
     ModalDeleteAllConfirmComponent,
-    LoadingScreenComponent,
+    LoadingScreenComponent
   ],
   imports: [
     BrowserModule,
