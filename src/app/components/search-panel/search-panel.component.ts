@@ -32,11 +32,4 @@ export class SearchPanelComponent implements OnInit {
     this.searchingEvent.emit(true);
     this.searchTerm$.next(value)
   }
-
-  // onKeypressEvent(event: any){
-  //   this.searchingEvent.emit(true);
-  //   this.ipZoneService.search(event.target.value).subscribe(() => {
-  //     this.searchingEvent.emit(false);
-  //   })
-  // }
 }

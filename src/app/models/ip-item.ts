@@ -1,8 +1,13 @@
 export interface IIpItem {
   id: number;
-  code: string;
+  base: string;
   net: string;
   gate: string;
+  last: string,
+  mask: string,
+  hostmask: string,
+  broadcast: string,
+  code: string;
   zone: string;
   vlan: number;
   signed: boolean;

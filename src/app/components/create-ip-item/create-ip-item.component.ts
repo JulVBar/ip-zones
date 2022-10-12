@@ -28,7 +28,6 @@ export class CreateIpItemComponent implements OnInit, OnDestroy {
         item => {
           this.currentIpItem = item;
           this.isEditForm = Boolean(this.currentIpItem.id);
-          // this.currentIpItemStreamSub.unsubscribe();
       });
 
       if (this.isEditForm) {
@@ -88,12 +87,12 @@ export class CreateIpItemComponent implements OnInit, OnDestroy {
       Validators.min(0),
       Validators.max(255)
     ]),
-    net5: new FormControl<number>(0, [
+    net5: new FormControl<number>(1, [
       Validators.required,
-      Validators.min(0),
+      Validators.min(1),
       Validators.max(32)
     ]),
-    vlan: new FormControl<number>(0, [
+    vlan: new FormControl<number>(1, [
       Validators.required,
       Validators.min(1)
     ]),
@@ -130,6 +129,7 @@ export class CreateIpItemComponent implements OnInit, OnDestroy {
                     this.form.value.net4 + '/' +
                     this.form.value.net5;
     const ipObj = new Netmask(ipSrting);
+
     const hostMin = ipObj.first;
     const reversedHost = hostMin.split('.').reverse().join('.').replace('.', 'F').replace('.', 'S');
     const firstIndex = reversedHost.indexOf('F') + 1;
@@ -138,8 +138,13 @@ export class CreateIpItemComponent implements OnInit, OnDestroy {
 
     const newIpItem = {
       id: this.currentIpItem.id || +this.ipZoneService.lastId + 1 as number,
+      base: ipObj.base,
       net: ipSrting as string,
       gate: hostMin as string,
+      last: ipObj.last as string,
+      mask: ipObj.mask as string,
+      hostmask: ipObj.hostmask as string,
+      broadcast: ipObj.broadcast as string,
       code: this.form.value.ipzone + '-' +
         this.form.value.net2 + '-' +
         subnet + '-' +
@@ -148,7 +153,7 @@ export class CreateIpItemComponent implements OnInit, OnDestroy {
       vlan: this.form.value.vlan as number,
       signed: this.currentIpItem.signed || false as boolean,
       date: this.currentIpItem.date || new Date as Date,
-      priority: this.currentIpItem.priority || false as boolean
+      priority: this.currentIpItem.priority || false as boolean,
     }
 
     if (this.isEditForm) {
