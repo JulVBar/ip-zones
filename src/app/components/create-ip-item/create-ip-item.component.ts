@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Subject, Subscription, takeUntil } from 'rxjs';
 import { IIpItem } from 'src/app/models/ip-item';
 import { IpZoneService } from 'src/app/services/ip-zone.service';
 import {ModalService} from '../../services/modal.service';
@@ -10,23 +11,24 @@ const Netmask = require('netmask').Netmask;
   styleUrls: ['./create-ip-item.component.scss']
 })
 export class CreateIpItemComponent implements OnInit, OnDestroy {
-  // zones = ['pr', 'nv', 'kl', 'ks', 'vb', 'ms', 'pd', 'kv', 'ps', 'pg', 'vs', 'cn', 'ad', 'kr', 'ksh', 'kp', 'kg'].sort();
-  zones: string[];
-  isLoading = false;
+  public zones: string[];
+  public isLoading = false;
+  public isEditForm: boolean;
+  private currentIpItem: IIpItem;
 
-  currentIpItem: IIpItem;
-  isEditForm: boolean;
+  private currentIpItemStreamSub = new Subscription();
+  public destroyed$ = new Subject();
 
   constructor(
     public ipZoneService: IpZoneService,
     private modalService: ModalService)
     {
       this.isEditForm = false;
-      this.ipZoneService.currentIpItemStream$.subscribe(
+      this.currentIpItemStreamSub = this.ipZoneService.currentIpItemStream$.subscribe(
         item => {
           this.currentIpItem = item;
           this.isEditForm = Boolean(this.currentIpItem.id);
-          console.log('sub')
+          // this.currentIpItemStreamSub.unsubscribe();
       });
 
       if (this.isEditForm) {
@@ -44,11 +46,18 @@ export class CreateIpItemComponent implements OnInit, OnDestroy {
     }
 
   ngOnInit(): void {
-    this.ipZoneService.getAllDistricts().subscribe(
+    this.ipZoneService.getAllDistricts()
+    .pipe(
+      takeUntil(this.destroyed$)
+    )
+    .subscribe(
       (disctricts) => this.zones = disctricts.sort());
   }
+
   ngOnDestroy(): void {
- //отписаться
+    this.currentIpItemStreamSub.unsubscribe();
+    this.destroyed$.next(null)
+    this.destroyed$.complete()
   }
 
   closeForm(): void {
@@ -143,13 +152,21 @@ export class CreateIpItemComponent implements OnInit, OnDestroy {
     }
 
     if (this.isEditForm) {
-      this.ipZoneService.put(newIpItem).subscribe(() => {
+      this.ipZoneService.put(newIpItem)
+      .pipe(
+        takeUntil(this.destroyed$)
+      )
+      .subscribe(() => {
         this.isLoading = false;
         this.modalService.close();
         this.modalService.openSuccessModal();
       })
     } else {
-      this.ipZoneService.create(newIpItem).subscribe(() => {
+      this.ipZoneService.create(newIpItem)
+      .pipe(
+        takeUntil(this.destroyed$)
+      )
+      .subscribe(() => {
         this.isLoading = false;
         this.ipZoneService.setCreatedItem(newIpItem.code);
         this.modalService.close();

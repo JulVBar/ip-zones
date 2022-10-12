@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { IIpItem } from 'src/app/models/ip-item';
 import { IpZoneService } from 'src/app/services/ip-zone.service';
 import { ModalService } from 'src/app/services/modal.service';
@@ -7,21 +8,31 @@ import { ModalService } from 'src/app/services/modal.service';
   templateUrl: './ip-item.component.html',
   styleUrls: ['./ip-item.component.scss']
 })
-export class IpItemComponent implements OnInit {
+export class IpItemComponent implements OnInit, OnDestroy {
   @Input() ipItem: IIpItem;
 
-  isOpen = false;
-  isOpenModal = false;
-  isEdit = false;
+  public isOpenDropdown = false;
+  public isOpenModal = false;
+
+  private prioritySub = new Subscription();
+  private signedSub = new Subscription();
 
   constructor(
     public ipZoneService: IpZoneService,
     public modalService: ModalService
   ) { }
 
+  ngOnInit(): void {
+  }
+
+  ngOnDestroy(): void {
+    this.prioritySub.unsubscribe();
+    this.signedSub.unsubscribe();
+  }
+
   deleteItem(id: number) {
     this.ipZoneService.delete(id).subscribe();
-    this.isOpen = false;
+    this.isOpenDropdown = false;
   }
 
   setSigned(item: IIpItem) {
@@ -29,8 +40,8 @@ export class IpItemComponent implements OnInit {
       ...item,
       signed: !item.signed
     }
-    this.ipZoneService.put(newItem).subscribe();
-    this.isOpen = false;
+    this.signedSub = this.ipZoneService.put(newItem).subscribe();
+    this.isOpenDropdown = false;
   }
 
   setPriority(item: IIpItem) {
@@ -38,17 +49,13 @@ export class IpItemComponent implements OnInit {
       ...item,
       priority: !item.priority
     }
-    this.ipZoneService.put(newItem).subscribe();
-    this.isOpen = false;
+    this.prioritySub = this.ipZoneService.put(newItem).subscribe();
+    this.isOpenDropdown = false;
   }
 
   editItem(item: IIpItem) {
     this.modalService.openModal();
-    this.isOpen = false;
+    this.isOpenDropdown = false;
     this.ipZoneService.setCurrentIpItem(item)
-  }
-
-  ngOnInit(): void {
-
   }
 }
