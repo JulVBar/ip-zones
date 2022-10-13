@@ -1,0 +1,61 @@
+
+<app-loader *ngIf="isLoading"></app-loader>
+
+<main>
+  <div class="view">
+    <div class="view-header">
+      <h1 class="view-title">{{ipItem.code}}</h1>
+      <div class="copy-btn" (click)="copyText(ipItem.code)">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+          <path d="M4 4L4 24L11 24L11 22L6 22L6 6L18 6L18 7L20 7L20 4 Z M 12 8L12 28L28 28L28 8 Z M 14 10L26 10L26 26L14 26Z"/>
+        </svg>
+      </div>
+      <div
+        class="copy-tooltip tooltip"
+        *ngIf="modalService.modalTooltip$ | async">
+        String copied
+      </div>
+    </div>
+    <ul class="view-list">
+      <li>
+        <div>Net:</div>
+        <div>{{ipItem.net}}</div>
+      </li>
+      <li>
+        <div>Base:</div>
+        <div>{{ipItem.base}}</div>
+      </li>
+      <li>
+        <div>Gate:</div>
+        <div>{{ipItem.gate}}</div>
+      </li>
+      <li>
+        <div>Last ip:</div>
+        <div>{{ipItem.last}}</div>
+      </li>
+      <li>
+        <div>Mask:</div>
+        <div>{{ipItem.mask}}</div>
+      </li>
+      <li>
+        <div>Host mask:</div>
+        <div>{{ipItem.hostmask}}</div>
+      </li>
+      <li>
+        <div>Broadcast:</div>
+        <div>{{ipItem.broadcast}}</div>
+      </li>
+      <li>
+        <div>Vlan:</div>
+        <div>{{ipItem.vlan}}</div>
+      </li>
+      <li>
+        <div>Created:</div>
+        <div>{{ipItem.date | date}}</div>
+      </li>
+    </ul>
+
+    <button class="button-blue" type="button" (click)="goBack()">Go back</button>
+  </div>
+</main>
+

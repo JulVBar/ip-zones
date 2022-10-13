@@ -1,13 +1,2 @@
 @import '../../../assets/styles/variables.scss';
 @import '../../../assets/styles/ip-list.scss';
-
-.mo {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  z-index: 100;
-  transform: translate(-50%, -50%);
-  background: darkkhaki;
-  width: 300px;
-  height: 300px;
-}

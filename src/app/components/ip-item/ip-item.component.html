@@ -12,7 +12,6 @@
   </li>
   <li class="ip-list-item">{{ipItem.vlan}}</li>
   <li [ngClass]="{'active': ipItem.signed}" class="ip-list-item signed"><div></div></li>
-  <!-- <li class="ip-list-item">{{ipItem.date.toString().slice(0, 10)}}</li> -->
   <li class="ip-list-item">{{ipItem.date | date}}</li>
   <li class="ip-list-item dots">
     <svg
@@ -25,6 +24,8 @@
     <div *ngIf="isOpenDropdown" class="dots">
       <div  class="dots-wrapper" (click)="isOpenDropdown = false"></div>
       <div class="dots-menu">
+        <div class="dots-menu-item" routerLink="view/{{ipItem.id}}">View</div>
+        <div class="dots-menu-item" (click)="editItem(ipItem)">Edit</div>
         <div
           class="dots-menu-item"
           (click)="setSigned(ipItem)"
@@ -38,7 +39,6 @@
           {{ipItem.priority ? 'Remove priority' : 'Add priority'}}
         </div>
         <div class="dots-menu-item" (click)="deleteItem(ipItem.id)">Delete</div>
-        <div class="dots-menu-item" (click)="editItem(ipItem)">Edit</div>
       </div>
     </div>
   </li>

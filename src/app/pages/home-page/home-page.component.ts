@@ -1,14 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {ModalService} from '../../services/modal.service';
 import { IpZoneService } from 'src/app/services/ip-zone.service';
 import { IIpItem } from 'src/app/models/ip-item';
+import { Subject, takeUntil } from 'rxjs';
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss']
 })
-export class HomePageComponent implements OnInit {
-  isLoading = false;
+export class HomePageComponent implements OnInit, OnDestroy {
+  public isLoading = false;
+  public destroyed$ = new Subject();
 
 
   constructor(public modalService: ModalService,
@@ -16,9 +18,18 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLoading = true;
-    this.ipZoneService.getAll().subscribe(() => {
+    this.ipZoneService.getAll()
+    .pipe(
+      takeUntil(this.destroyed$)
+    )
+    .subscribe(() => {
       this.isLoading = false
     })
+  }
+
+  ngOnDestroy(): void {
+    this.destroyed$.next(null)
+    this.destroyed$.complete()
   }
 
   searchingLoad(state: boolean) {

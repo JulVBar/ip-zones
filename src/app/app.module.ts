@@ -27,6 +27,8 @@ import { IpListLimitComponent } from './components/ip-list-limit/ip-list-limit.c
 import { ModalDeleteAllConfirmComponent } from './components/modal-delete-all-confirm/modal-delete-all-confirm.component';
 import { LoadingScreenComponent } from './components/loading-screen/loading-screen.component';
 import { FormsModule } from '@angular/forms';
+import { ViewIpItemComponent } from './components/view-ip-item/view-ip-item.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +51,9 @@ import { FormsModule } from '@angular/forms';
     SortPipe,
     IpListLimitComponent,
     ModalDeleteAllConfirmComponent,
-    LoadingScreenComponent
+    LoadingScreenComponent,
+    ViewIpItemComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

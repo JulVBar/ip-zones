@@ -89,7 +89,11 @@ main {
   }
 }
 
-.tooltip {
+.copy-tooltip {
+  position: fixed;
+  bottom: 5%;
+  left: 5%;
+  z-index: 999;
   animation: fadeInScale 0.5s;
   border-radius: $br;
   background: $primary;
@@ -97,6 +101,16 @@ main {
   padding: 1rem 3rem;
 }
 
-
-
-
+.copy-btn {
+  cursor: pointer;
+  svg {
+    width: 2rem;
+    height: 2rem;
+    fill: $primary;
+    transform: scale(1);
+    transition: all 0.2s linear;
+  }
+  &:hover svg {
+    transform: scale(1.2);
+  }
+}

@@ -9,13 +9,6 @@
     min-height: 7rem;
     position: relative;
   }
-  &-tooltip {
-    position: absolute;
-    top: -1rem;
-    right: -10rem;
-    z-index: 999;
-  }
-
   &-title {
     margin-bottom: 1rem;
   }
@@ -39,19 +32,6 @@
   &-code {
     font-size: 1.2rem;
     font-weight: 700;
-  }
-  &-btn {
-    cursor: pointer;
-    svg {
-      width: 2rem;
-      height: 2rem;
-      fill: $primary;
-      transform: scale(1);
-      transition: all 0.2s linear;
-    }
-    &:hover svg {
-      transform: scale(1.2);
-    }
   }
 }
 

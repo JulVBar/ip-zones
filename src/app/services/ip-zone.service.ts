@@ -48,6 +48,14 @@ export class IpZoneService {
     )
   }
 
+  getIpItemById(id: string): Observable<IIpItem>{
+    const url = `${this.ipDataBase}/${id}`;
+    return this.http.get<IIpItem>(url)
+      .pipe(
+        catchError(this.errorHandler.bind(this))
+      )
+  }
+
   create(item: IIpItem): Observable<IIpItem> {
     return this.http.post<IIpItem>(this.ipDataBase, item)
       .pipe(
