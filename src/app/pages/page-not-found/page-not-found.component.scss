@@ -1,0 +1,37 @@
+@import '../../../assets/styles/variables.scss';
+@import '../../components/empty-placeholder/empty-placeholder.component.scss';
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Lato');
+
+$white: #EDEDED;
+$gray: #BFC0C0;
+$dark: #585959;
+$light: #D3DEEA;
+
+.page-not-found {
+  background: transparent;
+  text-align: center;
+  min-height: $full-h;
+  .ghost-container {
+    margin-top: -5rem;
+    margin-bottom: 7rem;
+  }
+  h1 {
+    font-family: 'Abril Fatface', serif;
+    color: $white;
+    text-align: center;
+    font-size: 10rem;
+    margin: 0;
+    text-shadow: -1px 0 $gray, 0 1px $gray, 1px 0 $gray, 0 -1px $gray;
+  }
+  h3 {
+    font-family: 'Lato', sans-serif;
+    font-size: 2rem;
+    text-transform: uppercase;
+    text-align: center;
+    color: $gray;
+    margin-top: -20px;
+    font-weight: 900;
+  }
+}
+
+

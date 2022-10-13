@@ -28,7 +28,8 @@ import { ModalDeleteAllConfirmComponent } from './components/modal-delete-all-co
 import { LoadingScreenComponent } from './components/loading-screen/loading-screen.component';
 import { FormsModule } from '@angular/forms';
 import { ViewIpItemComponent } from './components/view-ip-item/view-ip-item.component';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,6 +65,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     FormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent
+  ]
 })
 export class AppModule { }
